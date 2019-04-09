@@ -32,31 +32,31 @@ class RegistrationViewController: FormViewController {
                 $0.placeholder = "First Name"
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "plus_image")
+                    cell.imageView?.image = UIImage(named: "user")
             }
             <<< NameRow("lastNameRow") {
                 $0.placeholder = "Last Name"
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "plus_image")
+                    cell.imageView?.image = UIImage(named: "user")
             }
             <<< AccountRow("userNameRow") {
                 $0.placeholder = "User Name"
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "plus_image")
+                    cell.imageView?.image = UIImage(named: "user")
             }
             <<< EmailRow("emailRow") {
                 $0.placeholder = "Email"
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "plus_image")
+                    cell.imageView?.image = UIImage(named: "email")
             }
             <<< PasswordRow("passwordRow") {
                 $0.placeholder = "Password"
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "plus_image")
+                    cell.imageView?.image = UIImage(named: "password")
             }
     }
 
@@ -66,8 +66,8 @@ class RegistrationViewController: FormViewController {
         print(errors)
         print(form.values())
         createUserAccount()
-        dismiss(animated: true, completion: nil)
-        //print(form.values()["emailRow"])
+        //dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     func createUserAccount(){

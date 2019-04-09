@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func signOutBtnClick(_ sender: UIButton) {
         signOutUserAccount()
+        dismiss(animated: true, completion: nil)
     }
     
     func signOutUserAccount(){

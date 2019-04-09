@@ -25,14 +25,15 @@ class ResetPasswordViewController: FormViewController {
                 $0.placeholder = "Email"
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "plus_image")
+                    cell.imageView?.image = UIImage(named: "email")
                 }
             <<< ButtonRow() {
                 $0.title = "Reset"
                 }.onCellSelection({ (cell, row) in
 //                    print(self.form.values())
                     self.resetPasswordUserAccount()
-                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 })
     }
     

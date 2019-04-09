@@ -38,7 +38,7 @@
         <!--Home View Controller-->
         <scene sceneID="xQv-IA-fcG">
             <objects>
-                <viewController id="50q-7u-DFI" customClass="HomeViewController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="50q-7u-DFI" customClass="HomeViewController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rCa-Us-TNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,10 +68,25 @@
                     <view key="view" contentMode="scaleToFill" id="d0C-kg-eGC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NJ3-Af-5Zq">
+                                <rect key="frame" x="0.0" y="166" width="375" height="359"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NJ3-Af-5Zq" firstAttribute="top" secondItem="9x0-sQ-uiK" secondAttribute="top" constant="102" id="UDr-mw-WjD"/>
+                            <constraint firstItem="NJ3-Af-5Zq" firstAttribute="leading" secondItem="9x0-sQ-uiK" secondAttribute="leading" id="Wix-Os-1uZ"/>
+                            <constraint firstItem="9x0-sQ-uiK" firstAttribute="trailing" secondItem="NJ3-Af-5Zq" secondAttribute="trailing" id="fU2-WN-AJT"/>
+                            <constraint firstItem="9x0-sQ-uiK" firstAttribute="bottom" secondItem="NJ3-Af-5Zq" secondAttribute="bottom" constant="142" id="o8V-GH-9Zz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9x0-sQ-uiK"/>
                     </view>
                     <navigationItem key="navigationItem" id="hT7-j5-JUh"/>
+                    <connections>
+                        <outlet property="tableView" destination="NJ3-Af-5Zq" id="xJ9-Lt-1hx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fn-w1-9JB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
