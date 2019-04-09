@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>957966492477-33uhcqof6ng7u7nptetr3q979gc2bc46.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.957966492477-33uhcqof6ng7u7nptetr3q979gc2bc46</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCh3tEm8RSjnbXcloK3r_IKONbl61M0YJE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>957966492477</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.scui5.EWS.com</string>
+	<key>PROJECT_ID</key>
+	<string>ewsdemo-6e80f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ewsdemo-6e80f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:957966492477:ios:18634422382b79de</string>
+	<key>DATABASE_URL</key>
+	<string>https://ewsdemo-6e80f.firebaseio.com</string>
+</dict>
+</plist>
