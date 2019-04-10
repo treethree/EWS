@@ -8,16 +8,22 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
+var lat : Double = 0
+var lot : Double = 0
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate{
 
     var window: UIWindow?
+    var locationManager = CLLocationManager()
+
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        setupLocation()
         return true
     }
 
@@ -41,6 +47,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setupLocation(){
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() == .authorizedAlways{
+            locationManager.startUpdatingLocation()
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let loc = locations.last{
+            lat = loc.coordinate.latitude
+            lot = loc.coordinate.longitude
+            print(lat,lot)
+            locationManager.stopUpdatingLocation()
+        }
     }
 
 

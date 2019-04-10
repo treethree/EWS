@@ -11,6 +11,7 @@ target 'EWS' do
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'Eureka'
   post_install do |installer|
     installer.pods_project.targets.each do |target|

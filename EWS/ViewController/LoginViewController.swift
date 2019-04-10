@@ -15,8 +15,10 @@ class LoginViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "LogIn"
+        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         
@@ -27,7 +29,7 @@ class LoginViewController: FormViewController {
         form +++ Section()
             //email account
             <<< AccountRow("accountRow") {
-                $0.placeholder = "User Name"
+                $0.placeholder = "User Name(Email)"
                 $0.add(rule: RuleRequired())
                 $0.add(rule: RuleEmail())
                 $0.validationOptions = .validatesOnChangeAfterBlurred
@@ -38,7 +40,15 @@ class LoginViewController: FormViewController {
                     }
                 }
                 .cellSetup { cell, row in
-                    cell.imageView?.image = UIImage(named: "user")
+                    cell.backgroundColor = .clear
+                    cell.layer.cornerRadius = 8.0
+                    cell.layer.borderWidth = 1.0
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.masksToBounds = true
+                    //cell.height = { 55 }
+
+                    
+                    cell.imageView?.image = UIImage(named: "email")
                 }
                 .onRowValidationChanged { cell, row in
                     let rowIndex = row.indexPath!.row
@@ -57,6 +67,7 @@ class LoginViewController: FormViewController {
             }
             <<< PasswordRow("passwordRow") {
                 $0.placeholder = "Password"
+                $0.add(rule: RuleRequired())
                 $0.add(rule: RuleMinLength(minLength: 8))
                 $0.add(rule: RuleMaxLength(maxLength: 13))
                 }
@@ -81,6 +92,11 @@ class LoginViewController: FormViewController {
                     }
                 }
                 .cellSetup { cell, row in
+                    cell.backgroundColor = .clear
+                    cell.layer.cornerRadius = 8.0
+                    cell.layer.borderWidth = 1.0
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.masksToBounds = true
                     cell.imageView?.image = UIImage(named: "password")
             }
             <<< ButtonRow() {
@@ -88,9 +104,17 @@ class LoginViewController: FormViewController {
                 }.onCellSelection({ (cell, row) in
                     print(self.form.values())
                     self.signUserAccount()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                     self.present(vc!, animated: true, completion: nil)
                 })
+                .cellSetup { cell, row in
+                    cell.backgroundColor = .clear
+                    cell.layer.cornerRadius = 8.0
+                    cell.layer.borderWidth = 1.0
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.masksToBounds = true
+            }
+            
             <<< ButtonRow() {
                 $0.title = "Create new account"
                 }.onCellSelection({ (cell, row) in
@@ -98,6 +122,13 @@ class LoginViewController: FormViewController {
                     self.navigationController?.pushViewController(vc!, animated: true)
                     //self.present(vc!, animated: true, completion: nil)
                 })
+                .cellSetup { cell, row in
+                    cell.backgroundColor = .clear
+                    cell.layer.cornerRadius = 8.0
+                    cell.layer.borderWidth = 1.0
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.masksToBounds = true
+            }
             <<< ButtonRow() {
                 $0.title = "Forget Password"
                 }.onCellSelection({ (cell, row) in
@@ -105,6 +136,13 @@ class LoginViewController: FormViewController {
                     self.navigationController?.pushViewController(vc!, animated: true)
                     //self.present(vc!, animated: true, completion: nil)
                 })
+                .cellSetup { cell, row in
+                    cell.backgroundColor = .clear
+                    cell.layer.cornerRadius = 8.0
+                    cell.layer.borderWidth = 1.0
+                    cell.layer.borderColor = UIColor.white.cgColor
+                    cell.layer.masksToBounds = true
+        }
     }
     
     func signUserAccount(){

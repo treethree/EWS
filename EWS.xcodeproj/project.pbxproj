@@ -12,11 +12,23 @@
 		2F074962225C50EE00215677 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074961225C50EE00215677 /* RegistrationViewController.swift */; };
 		2F074964225C5F0F00215677 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074963225C5F0F00215677 /* ResetPasswordViewController.swift */; };
 		2F074966225C60AA00215677 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074965225C60AA00215677 /* HomeViewController.swift */; };
+		2F074968225D11FB00215677 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074967225D11FB00215677 /* MainTabBarViewController.swift */; };
+		2F07496A225D337800215677 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074969225D337800215677 /* FeedViewController.swift */; };
+		2F07496C225D341600215677 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496B225D341600215677 /* UsersViewController.swift */; };
+		2F07496E225D346000215677 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496D225D346000215677 /* FriendsViewController.swift */; };
+		2F074970225D346B00215677 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496F225D346B00215677 /* SettingViewController.swift */; };
+		2F074975225D3A5C00215677 /* BackgroundImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074974225D3A5C00215677 /* BackgroundImageExtension.swift */; };
+		2F074978225D4C6600215677 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074977225D4C6600215677 /* WeatherTableViewCell.swift */; };
 		2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F750379225BF98F0045570B /* AppDelegate.swift */; };
 		2F75037C225BF98F0045570B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75037B225BF98F0045570B /* ViewController.swift */; };
 		2F75037F225BF98F0045570B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F75037D225BF98F0045570B /* Main.storyboard */; };
 		2F750381225BF9900045570B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F750380225BF9900045570B /* Assets.xcassets */; };
 		2F750384225BF9900045570B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F750382225BF9900045570B /* LaunchScreen.storyboard */; };
+		2FBC7250225D784400B58065 /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC724F225D784400B58065 /* ApiHandler.swift */; };
+		2FBC7253225D787100B58065 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7252225D787100B58065 /* Weather.swift */; };
+		2FBC7255225D8E9B00B58065 /* DateConverterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */; };
+		2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7256225D953A00B58065 /* ProfileViewController.swift */; };
+		2FBC7259225DACB200B58065 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */; };
 		FD11DA03930E6AFF50C452AE /* Pods_EWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +38,13 @@
 		2F074961225C50EE00215677 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2F074963225C5F0F00215677 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		2F074965225C60AA00215677 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2F074967225D11FB00215677 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		2F074969225D337800215677 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		2F07496B225D341600215677 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		2F07496D225D346000215677 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		2F07496F225D346B00215677 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2F074974225D3A5C00215677 /* BackgroundImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageExtension.swift; sourceTree = "<group>"; };
+		2F074977225D4C6600215677 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		2F750376225BF98F0045570B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F750379225BF98F0045570B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F75037B225BF98F0045570B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +52,11 @@
 		2F750380225BF9900045570B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F750383225BF9900045570B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F750385225BF9900045570B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FBC724F225D784400B58065 /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
+		2FBC7252225D787100B58065 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterExtension.swift; sourceTree = "<group>"; };
+		2FBC7256225D953A00B58065 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEE6D6F5353A869FB9BAF2C /* Pods-EWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.debug.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.debug.xcconfig"; sourceTree = "<group>"; };
 		F6AD22029D09A8082DF27A39 /* Pods-EWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.release.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,8 +90,32 @@
 				2F074961225C50EE00215677 /* RegistrationViewController.swift */,
 				2F074963225C5F0F00215677 /* ResetPasswordViewController.swift */,
 				2F074965225C60AA00215677 /* HomeViewController.swift */,
+				2F074969225D337800215677 /* FeedViewController.swift */,
+				2F07496B225D341600215677 /* UsersViewController.swift */,
+				2F07496D225D346000215677 /* FriendsViewController.swift */,
+				2F07496F225D346B00215677 /* SettingViewController.swift */,
+				2F074967225D11FB00215677 /* MainTabBarViewController.swift */,
+				2FBC7256225D953A00B58065 /* ProfileViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2F074973225D3A3400215677 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F074974225D3A5C00215677 /* BackgroundImageExtension.swift */,
+				2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2F074976225D4C3D00215677 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2F074977225D4C6600215677 /* WeatherTableViewCell.swift */,
+				2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		2F75036D225BF98F0045570B = {
@@ -91,6 +139,10 @@
 		2F750378225BF98F0045570B /* EWS */ = {
 			isa = PBXGroup;
 			children = (
+				2FBC7251225D786200B58065 /* Model */,
+				2FBC724E225D782900B58065 /* APIHandlers */,
+				2F074976225D4C3D00215677 /* CustomTableViewCell */,
+				2F074973225D3A3400215677 /* Extensions */,
 				2F750379225BF98F0045570B /* AppDelegate.swift */,
 				2F07495F225C436700215677 /* ViewController */,
 				2F75037B225BF98F0045570B /* ViewController.swift */,
@@ -101,6 +153,22 @@
 				2F07495A225C3E7A00215677 /* GoogleService-Info.plist */,
 			);
 			path = EWS;
+			sourceTree = "<group>";
+		};
+		2FBC724E225D782900B58065 /* APIHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC724F225D784400B58065 /* ApiHandler.swift */,
+			);
+			path = APIHandlers;
+			sourceTree = "<group>";
+		};
+		2FBC7251225D786200B58065 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC7252225D787100B58065 /* Weather.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8FAD7B8C5A25D01ABD3C960B /* Frameworks */ = {
@@ -260,10 +328,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F07495E225C435E00215677 /* LoginViewController.swift in Sources */,
+				2F074970225D346B00215677 /* SettingViewController.swift in Sources */,
 				2F75037C225BF98F0045570B /* ViewController.swift in Sources */,
 				2F074964225C5F0F00215677 /* ResetPasswordViewController.swift in Sources */,
+				2FBC7253225D787100B58065 /* Weather.swift in Sources */,
+				2F074968225D11FB00215677 /* MainTabBarViewController.swift in Sources */,
 				2F074962225C50EE00215677 /* RegistrationViewController.swift in Sources */,
+				2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */,
 				2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */,
+				2F07496E225D346000215677 /* FriendsViewController.swift in Sources */,
+				2F07496A225D337800215677 /* FeedViewController.swift in Sources */,
+				2FBC7255225D8E9B00B58065 /* DateConverterExtension.swift in Sources */,
+				2F074975225D3A5C00215677 /* BackgroundImageExtension.swift in Sources */,
+				2F07496C225D341600215677 /* UsersViewController.swift in Sources */,
+				2FBC7250225D784400B58065 /* ApiHandler.swift in Sources */,
+				2F074978225D4C6600215677 /* WeatherTableViewCell.swift in Sources */,
+				2FBC7259225DACB200B58065 /* UsersTableViewCell.swift in Sources */,
 				2F074966225C60AA00215677 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
