@@ -16,7 +16,6 @@ class LoginViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "LogIn"
-        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false

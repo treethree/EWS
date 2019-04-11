@@ -38,6 +38,7 @@
 		2FBC7268225E98B400B58065 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7267225E98B400B58065 /* LocationViewController.swift */; };
 		2FBC726A225E98D100B58065 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */; };
 		2FBC726E225ED20E00B58065 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC726D225ED20E00B58065 /* Constant.swift */; };
+		2FBC7271225F87DB00B58065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7270225F87DB00B58065 /* BaseViewController.swift */; };
 		FD11DA03930E6AFF50C452AE /* Pods_EWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		2FBC7267225E98B400B58065 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
 		2FBC726D225ED20E00B58065 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		2FBC7270225F87DB00B58065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEE6D6F5353A869FB9BAF2C /* Pods-EWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.debug.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.debug.xcconfig"; sourceTree = "<group>"; };
 		F6AD22029D09A8082DF27A39 /* Pods-EWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.release.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		2F07495F225C436700215677 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2FBC7270225F87DB00B58065 /* BaseViewController.swift */,
 				2F07495D225C435E00215677 /* LoginViewController.swift */,
 				2F074961225C50EE00215677 /* RegistrationViewController.swift */,
 				2F074963225C5F0F00215677 /* ResetPasswordViewController.swift */,
@@ -403,6 +406,7 @@
 				2FBC725F225E5F9200B58065 /* UserModel.swift in Sources */,
 				2F074970225D346B00215677 /* SettingViewController.swift in Sources */,
 				2F75037C225BF98F0045570B /* ViewController.swift in Sources */,
+				2FBC7271225F87DB00B58065 /* BaseViewController.swift in Sources */,
 				2F074964225C5F0F00215677 /* ResetPasswordViewController.swift in Sources */,
 				2FBC7253225D787100B58065 /* Weather.swift in Sources */,
 				2FBC725D225E513B00B58065 /* WeatherCollectionViewCell.swift in Sources */,

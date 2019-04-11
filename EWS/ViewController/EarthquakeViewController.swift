@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class EarthquakeViewController: UIViewController {
+class EarthquakeViewController: BaseViewController {
 
     @IBOutlet weak var viewGms: GMSMapView!
     override func viewDidLoad() {

@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var colView: UICollectionView!
     
@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         colView.backgroundColor = .clear
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
