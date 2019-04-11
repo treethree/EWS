@@ -20,9 +20,29 @@ class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        
+//        FirebaseApiHandler.sharedInstance.getUsers { (users) in
+//            print(users)
+//        }
         getAllUsers()
         getUserImage()
+        
+        tblView.backgroundColor = .clear
+        tblView.showsVerticalScrollIndicator = false
+        tblView.bounces = false
     }
+
+    @IBAction func addFriendBtnClick(_ sender: UIButton) {
+        //sender.tag
+        
+//        FirebaseApiHandler.sharedInstance.getUsers { (users) in
+//            users
+//        }
+//        FirebaseApiHandler.sharedInstance.addFriend(friendId: users) { (error) in
+//            print(error)
+//        }
+    }
+    
     //get all users
     func getAllUsers(){
             self.ref.child("User").observeSingleEvent(of: .value) { (snapshot) in
@@ -46,19 +66,16 @@ class UsersViewController: UIViewController {
     
     //get image from firebase storage
     func getUserImage(){
-        //if let user = Auth.auth().currentUser{
         for uid in userID{
             let imagename = "UserImage/\(uid).jpeg"
             var storageRef = Storage.storage().reference()
             storageRef = storageRef.child(imagename)
             storageRef.getData(maxSize: 1*300*300) { (data, error) in
                 let img = UIImage(data: data!)
-                //print(img)
                 self.userimg.append(img!)
                 print(self.userimg)
             }
         }
-        //}
     }
 }
 
@@ -74,6 +91,7 @@ extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
         cell?.fnameLbl.text = "First Name: \(userObj["FirstName"]!)"
         cell?.lNameLbl.text = "Last Name: \(userObj["LastName"]!)"
         //cell?.imgView.image = getUserImage(uid: uidObj)
+        cell?.addFriendLbl.tag += 1
         return cell!
     }
     

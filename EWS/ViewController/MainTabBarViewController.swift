@@ -12,15 +12,15 @@ class MainTabBarViewController: UITabBarController,UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = UIColor(red: 48/255, green: 61/255, blue: 67/255, alpha: 1)
+        self.tabBar.barTintColor = UIColor(red: 225/255, green: 167/255, blue: 239/255, alpha: 1)
         self.configureTabbar()
         self.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
         var tabFrame = self.tabBar.frame
-        tabFrame.size.height = 65
-        tabFrame.origin.y = self.view.frame.size.height - 65
+        tabFrame.size.height = 55
+        tabFrame.origin.y = self.view.frame.size.height - 55
         self.tabBar.frame = tabFrame
         
         setDefaultSelection()
@@ -30,9 +30,9 @@ class MainTabBarViewController: UITabBarController,UITabBarControllerDelegate {
         
         self.tabBar.alpha = 1.0
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
         let count = self.tabBar.items?.count ?? 0
         for i in 0..<count {
             let item: UITabBarItem = self.tabBar.items![i]

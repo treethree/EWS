@@ -13,6 +13,7 @@ class UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var fnameLbl: UILabel!
     @IBOutlet weak var lNameLbl: UILabel!
     
+    @IBOutlet weak var addFriendLbl: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +25,5 @@ class UsersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

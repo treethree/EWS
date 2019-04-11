@@ -9,8 +9,8 @@
 import Foundation
 let baseAPIUrl = "https://api.darksky.net/forecast/68a4eee2e315f76149908dc5f3a1d092/%f,%f"
 
-class Apihandler: NSObject {
-    static let sharedInstance = Apihandler()
+class WeatherApiHandler: NSObject {
+    static let sharedInstance = WeatherApiHandler()
     private override init() {}
     
     func getApiForWeather(lat : Double, lot : Double ,completion: @escaping (_ arrayWeather: Weather?, _ error: Error?) -> Void){
@@ -24,9 +24,9 @@ class Apihandler: NSObject {
                 do{
                     let weath = try? JSONDecoder().decode(Weather.self, from: data!)
                     //cause urlSession is running in the background queue, we need do completion in main queue
-                    //DispatchQueue.main.async {
+                    DispatchQueue.main.async {
                         completion(weath,nil)
-                    //}
+                    }
                 }
             }
             }.resume()

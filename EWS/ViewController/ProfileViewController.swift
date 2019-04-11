@@ -24,7 +24,6 @@ class ProfileViewController:  FormViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false

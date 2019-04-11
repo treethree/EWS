@@ -14,7 +14,6 @@ class ResetPasswordViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Reset Password"
-        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false

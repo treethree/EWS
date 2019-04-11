@@ -14,7 +14,6 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
-        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         // Do any additional setup after loading the view.
     }
     func signOutUserAccount(){

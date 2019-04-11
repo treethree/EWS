@@ -18,6 +18,11 @@ class EarthquakeViewController: BaseViewController {
         // Do any additional setup after loading the view.
         let location = CLLocation(latitude: 43.4343, longitude: -120.3434)
         setupCordinate(loc: location)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.popViewController(animated: true)
     }
     
     func setupCordinate(loc : CLLocation){
@@ -47,4 +52,4 @@ class EarthquakeViewController: BaseViewController {
         markerImg.icon = UIImage.animatedImage(with: arrImg, duration: 3.0)
     }
 
-}
+} 

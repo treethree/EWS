@@ -23,7 +23,6 @@ class HomeViewController: BaseViewController {
             }
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         colView.backgroundColor = .clear
@@ -38,7 +37,7 @@ class HomeViewController: BaseViewController {
     }
 
     func callWeatherAPI(lat: Double, lot: Double)  {
-        Apihandler.sharedInstance.getApiForWeather(lat: lat, lot: lot) { (Weather, error) in
+        WeatherApiHandler.sharedInstance.getApiForWeather(lat: lat, lot: lot) { (Weather, error) in
             if Weather != nil{
                 self.curWeather = Weather!
                 print(lat,lot)
@@ -50,6 +49,7 @@ class HomeViewController: BaseViewController {
     @IBAction func locationBtnClick(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "LocationViewController")
         navigationController?.pushViewController(vc!, animated: true)
+        //present(vc!, animated: true, completion: nil)
     }
     
     @IBAction func earthquakeBtnClick(_ sender: UIButton) {

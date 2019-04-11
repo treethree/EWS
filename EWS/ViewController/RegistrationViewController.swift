@@ -15,7 +15,6 @@ class RegistrationViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign Up"
-        setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
@@ -201,7 +200,7 @@ class RegistrationViewController: FormViewController {
     @IBAction func SignUpBtnClick(_ sender: UIButton) {
         self.view.endEditing(true)
         let formVal = form.values()
-        userInfo = UserModel.init(firstName: formVal["firstNameRow"] as? String, lastName: formVal["lastNameRow"] as? String, email: formVal["emailRow"] as? String, gender: formVal["genderRow"] as? String, password: formVal["passwordRow"] as? String, latitude: String(lat), longitude: String(lot))
+        userInfo = UserModel("1", info: formVal)
         FirebaseApiHandler.sharedInstance.signUpUserAccount(userModel: userInfo!) { (error) in
             print("Error in sign up")
         }
