@@ -12,18 +12,37 @@ import GoogleMaps
 class EarthquakeViewController: BaseViewController {
 
     @IBOutlet weak var viewGms: GMSMapView!
+    var eq : Earthquake?
     override func viewDidLoad() {
         super.viewDidLoad()
         viewGms.mapType = .normal
         // Do any additional setup after loading the view.
-        let location = CLLocation(latitude: 43.4343, longitude: -120.3434)
-        setupCordinate(loc: location)
+        
+        callEarthquakeAPI()
         navigationController?.setNavigationBarHidden(true, animated: true)
+
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        navigationController?.popViewController(animated: true)
+//    override func viewDidDisappear(_ animated: Bool) {
+//        navigationController?.popViewController(animated: true)
+//    }
+    
+    func callEarthquakeAPI()  {
+        EarthquakeApiHandler.sharedInstance.getApiForEQ { (earthquake, error) in
+            if earthquake != nil{
+                self.eq = earthquake
+                for item in self.eq!.features{
+                    let lot = item.geometry.coordinates[0]
+                    let lat = item.geometry.coordinates[1]
+                    let location = CLLocation(latitude: lat, longitude: lot)
+                    self.setupCordinate(loc : location)
+                }
+            }else{
+                print("error found!")
+            }
+        }
     }
+    
     
     func setupCordinate(loc : CLLocation){
         //let location = CLLocation(latitude: 43.4343, longitude: -120.3434)
@@ -33,13 +52,6 @@ class EarthquakeViewController: BaseViewController {
         marker.map = viewGms
         marker.isDraggable = true
         setUpAnimationImage(markerImg: marker)
-
-//        let location2 = CLLocation(latitude: 44.4343, longitude: -121.3434)
-//        let marker2 = GMSMarker()
-//        marker2.title = "Second Location"
-//        marker2.position = location2.coordinate
-//        marker2.map = viewGms
-//        marker2.isDraggable = true
 
         viewGms.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: 5)
     }

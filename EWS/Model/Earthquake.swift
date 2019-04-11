@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+struct Earthquake: Codable {
+    let features: [Feature]
+}
+
+struct Feature: Codable {
+    let geometry: Geometry
+}
+
+struct Geometry: Codable {
+    let coordinates: [Double]
+}

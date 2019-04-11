@@ -13,21 +13,20 @@ class EarthquakeApiHandler: NSObject {
     static let sharedInstance = EarthquakeApiHandler()
     private override init() {}
     
-//    func getApiForWeather(lat : Double, lot : Double ,completion: @escaping (_ arrayWeather: Weather?, _ error: Error?) -> Void){
-//
-//        let urlString = String(format: baseAPIUrl, arguments:[lat,lot])
-//        guard let url = URL(string: urlString) else{
-//            return
-//        }
-//        URLSession.shared.dataTask(with : url){ (data, response, error) in
-//            if error == nil{
-//                do{
-//                    let weath = try? JSONDecoder().decode(Weather.self, from: data!)
-//                    DispatchQueue.main.async {
-//                        completion(weath,nil)
-//                    }
-//                }
-//            }
-//            }.resume()
-//    }
+    func getApiForEQ(completion: @escaping (_ arrayWeather: Earthquake?, _ error: Error?) -> Void){
+
+        guard let url = URL(string: baseAPIUrlForEQ) else{
+            return
+        }
+        URLSession.shared.dataTask(with : url){ (data, response, error) in
+            if error == nil{
+                do{
+                    let eq = try? JSONDecoder().decode(Earthquake.self, from: data!)
+                    DispatchQueue.main.async {
+                        completion(eq,nil)
+                    }
+                }
+            }
+            }.resume()
+    }
 }
