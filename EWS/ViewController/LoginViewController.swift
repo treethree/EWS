@@ -65,6 +65,10 @@ class LoginViewController: FormViewController {
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< PasswordRow("passwordRow") {
                 $0.placeholder = "Password"
                 $0.add(rule: RuleRequired())
@@ -99,11 +103,17 @@ class LoginViewController: FormViewController {
                     cell.layer.masksToBounds = true
                     cell.imageView?.image = UIImage(named: "password")
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< ButtonRow() {
                 $0.title = "Submit"
                 }.onCellSelection({ (cell, row) in
-                    print(self.form.values())
-                    self.signUserAccount()
+                    let formVal = self.form.values()
+                    FirebaseApiHandler.sharedInstance.signInUserAccount(email: formVal["accountRow"] as! String, password: formVal["passwordRow"] as! String, completionHandler: { (error) in
+                        print("Login error!")
+                    })
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                     self.present(vc!, animated: true, completion: nil)
                 })
@@ -113,6 +123,10 @@ class LoginViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
+            }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
             }
             
             <<< ButtonRow() {
@@ -129,6 +143,10 @@ class LoginViewController: FormViewController {
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< ButtonRow() {
                 $0.title = "Forget Password"
                 }.onCellSelection({ (cell, row) in
@@ -142,21 +160,6 @@ class LoginViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
-        }
-    }
-    
-    func signUserAccount(){
-        let formVal = form.values()
-        Auth.auth().signIn(withEmail: formVal["accountRow"] as! String, password: formVal["passwordRow"] as! String) { (result, error) in
-            if error == nil{
-                if let user = result?.user{
-                    
-                    print(user.email)
-                    print(user.uid)
-                }
-            }else{
-                print(error?.localizedDescription)
-            }
         }
     }
 

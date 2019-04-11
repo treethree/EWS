@@ -22,5 +22,8 @@ target 'EWS' do
       end
     end
   end
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
 
 end

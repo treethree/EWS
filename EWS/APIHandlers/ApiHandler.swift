@@ -22,15 +22,11 @@ class Apihandler: NSObject {
         URLSession.shared.dataTask(with : url){ (data, response, error) in
             if error == nil{
                 do{
-                    //print(urlString)
                     let weath = try? JSONDecoder().decode(Weather.self, from: data!)
-                    //print(weath)
-                    DispatchQueue.main.async {
+                    //cause urlSession is running in the background queue, we need do completion in main queue
+                    //DispatchQueue.main.async {
                         completion(weath,nil)
-                    }
-                    //                    catch{
-                    //                        completion(nil,error)
-                    //                    }
+                    //}
                 }
             }
             }.resume()

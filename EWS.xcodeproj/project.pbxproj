@@ -29,6 +29,15 @@
 		2FBC7255225D8E9B00B58065 /* DateConverterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */; };
 		2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7256225D953A00B58065 /* ProfileViewController.swift */; };
 		2FBC7259225DACB200B58065 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */; };
+		2FBC725B225E428C00B58065 /* FirebaseApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC725A225E428C00B58065 /* FirebaseApiHandler.swift */; };
+		2FBC725D225E513B00B58065 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC725C225E513B00B58065 /* WeatherCollectionViewCell.swift */; };
+		2FBC725F225E5F9200B58065 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC725E225E5F9200B58065 /* UserModel.swift */; };
+		2FBC7261225E94BB00B58065 /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7260225E94BB00B58065 /* SpaceCellRow.swift */; };
+		2FBC7264225E957000B58065 /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7263225E957000B58065 /* SpaceTableViewCell.swift */; };
+		2FBC7266225E95BD00B58065 /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FBC7265225E95BD00B58065 /* SpaceTableViewCell.xib */; };
+		2FBC7268225E98B400B58065 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7267225E98B400B58065 /* LocationViewController.swift */; };
+		2FBC726A225E98D100B58065 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */; };
+		2FBC726E225ED20E00B58065 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC726D225ED20E00B58065 /* Constant.swift */; };
 		FD11DA03930E6AFF50C452AE /* Pods_EWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +66,15 @@
 		2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterExtension.swift; sourceTree = "<group>"; };
 		2FBC7256225D953A00B58065 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
+		2FBC725A225E428C00B58065 /* FirebaseApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseApiHandler.swift; sourceTree = "<group>"; };
+		2FBC725C225E513B00B58065 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FBC725E225E5F9200B58065 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		2FBC7260225E94BB00B58065 /* SpaceCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
+		2FBC7263225E957000B58065 /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
+		2FBC7265225E95BD00B58065 /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
+		2FBC7267225E98B400B58065 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
+		2FBC726D225ED20E00B58065 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEE6D6F5353A869FB9BAF2C /* Pods-EWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.debug.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.debug.xcconfig"; sourceTree = "<group>"; };
 		F6AD22029D09A8082DF27A39 /* Pods-EWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.release.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +114,8 @@
 				2F07496F225D346B00215677 /* SettingViewController.swift */,
 				2F074967225D11FB00215677 /* MainTabBarViewController.swift */,
 				2FBC7256225D953A00B58065 /* ProfileViewController.swift */,
+				2FBC7267225E98B400B58065 /* LocationViewController.swift */,
+				2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -109,13 +129,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		2F074976225D4C3D00215677 /* CustomTableViewCell */ = {
+		2F074976225D4C3D00215677 /* CustomViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				2F074977225D4C6600215677 /* WeatherTableViewCell.swift */,
 				2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */,
+				2FBC725C225E513B00B58065 /* WeatherCollectionViewCell.swift */,
 			);
-			path = CustomTableViewCell;
+			path = CustomViewCell;
 			sourceTree = "<group>";
 		};
 		2F75036D225BF98F0045570B = {
@@ -139,16 +160,16 @@
 		2F750378225BF98F0045570B /* EWS */ = {
 			isa = PBXGroup;
 			children = (
-				2FBC7251225D786200B58065 /* Model */,
-				2FBC724E225D782900B58065 /* APIHandlers */,
-				2F074976225D4C3D00215677 /* CustomTableViewCell */,
-				2F074973225D3A3400215677 /* Extensions */,
 				2F750379225BF98F0045570B /* AppDelegate.swift */,
+				2FBC7251225D786200B58065 /* Model */,
+				2FBC726F225EFA2D00B58065 /* View */,
+				2FBC724E225D782900B58065 /* APIHandlers */,
+				2F074976225D4C3D00215677 /* CustomViewCell */,
+				2F074973225D3A3400215677 /* Extensions */,
 				2F07495F225C436700215677 /* ViewController */,
 				2F75037B225BF98F0045570B /* ViewController.swift */,
-				2F75037D225BF98F0045570B /* Main.storyboard */,
+				2FBC7262225E954800B58065 /* SupportingFiles */,
 				2F750380225BF9900045570B /* Assets.xcassets */,
-				2F750382225BF9900045570B /* LaunchScreen.storyboard */,
 				2F750385225BF9900045570B /* Info.plist */,
 				2F07495A225C3E7A00215677 /* GoogleService-Info.plist */,
 			);
@@ -159,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				2FBC724F225D784400B58065 /* ApiHandler.swift */,
+				2FBC725A225E428C00B58065 /* FirebaseApiHandler.swift */,
 			);
 			path = APIHandlers;
 			sourceTree = "<group>";
@@ -167,8 +189,29 @@
 			isa = PBXGroup;
 			children = (
 				2FBC7252225D787100B58065 /* Weather.swift */,
+				2FBC725E225E5F9200B58065 /* UserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2FBC7262225E954800B58065 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2FBC7265225E95BD00B58065 /* SpaceTableViewCell.xib */,
+				2FBC7260225E94BB00B58065 /* SpaceCellRow.swift */,
+				2FBC7263225E957000B58065 /* SpaceTableViewCell.swift */,
+				2FBC726D225ED20E00B58065 /* Constant.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		2FBC726F225EFA2D00B58065 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F75037D225BF98F0045570B /* Main.storyboard */,
+				2F750382225BF9900045570B /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8FAD7B8C5A25D01ABD3C960B /* Frameworks */ = {
@@ -192,6 +235,7 @@
 				2F750374225BF98F0045570B /* Resources */,
 				5134B23255C7EBCDE54B4F56 /* [CP] Embed Pods Frameworks */,
 				2F07495C225C42D800215677 /* ShellScript */,
+				FB1A36549848A6650209CDD2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,6 +288,7 @@
 				2F07495B225C3E7A00215677 /* GoogleService-Info.plist in Resources */,
 				2F750381225BF9900045570B /* Assets.xcassets in Resources */,
 				2F75037F225BF98F0045570B /* Main.storyboard in Resources */,
+				2FBC7266225E95BD00B58065 /* SpaceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +365,32 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB1A36549848A6650209CDD2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EWS/Pods-EWS-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EWS/Pods-EWS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -327,20 +398,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBC7264225E957000B58065 /* SpaceTableViewCell.swift in Sources */,
 				2F07495E225C435E00215677 /* LoginViewController.swift in Sources */,
+				2FBC725F225E5F9200B58065 /* UserModel.swift in Sources */,
 				2F074970225D346B00215677 /* SettingViewController.swift in Sources */,
 				2F75037C225BF98F0045570B /* ViewController.swift in Sources */,
 				2F074964225C5F0F00215677 /* ResetPasswordViewController.swift in Sources */,
 				2FBC7253225D787100B58065 /* Weather.swift in Sources */,
+				2FBC725D225E513B00B58065 /* WeatherCollectionViewCell.swift in Sources */,
 				2F074968225D11FB00215677 /* MainTabBarViewController.swift in Sources */,
+				2FBC726E225ED20E00B58065 /* Constant.swift in Sources */,
+				2FBC725B225E428C00B58065 /* FirebaseApiHandler.swift in Sources */,
 				2F074962225C50EE00215677 /* RegistrationViewController.swift in Sources */,
 				2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */,
 				2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */,
 				2F07496E225D346000215677 /* FriendsViewController.swift in Sources */,
+				2FBC7261225E94BB00B58065 /* SpaceCellRow.swift in Sources */,
+				2FBC7268225E98B400B58065 /* LocationViewController.swift in Sources */,
 				2F07496A225D337800215677 /* FeedViewController.swift in Sources */,
 				2FBC7255225D8E9B00B58065 /* DateConverterExtension.swift in Sources */,
 				2F074975225D3A5C00215677 /* BackgroundImageExtension.swift in Sources */,
 				2F07496C225D341600215677 /* UsersViewController.swift in Sources */,
+				2FBC726A225E98D100B58065 /* EarthquakeViewController.swift in Sources */,
 				2FBC7250225D784400B58065 /* ApiHandler.swift in Sources */,
 				2F074978225D4C6600215677 /* WeatherTableViewCell.swift in Sources */,
 				2FBC7259225DACB200B58065 /* UsersTableViewCell.swift in Sources */,

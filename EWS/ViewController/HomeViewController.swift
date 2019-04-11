@@ -12,27 +12,55 @@ import FirebaseDatabase
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var colView: UICollectionView!
+    
     var curWeather : Weather?
+    {
+        didSet{
+            DispatchQueue.main.async {
+                self.tblView.reloadData()
+                self.colView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
-          callWeatherAPI(lat: 37.8267, lot: -122.4233)
+        colView.backgroundColor = .clear
+        tblView.backgroundColor = .clear
+        tblView.showsVerticalScrollIndicator = false
+        tblView.bounces = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print(lat,lot)
+        callWeatherAPI(lat: lat, lot: lot)
+    }
+
     func callWeatherAPI(lat: Double, lot: Double)  {
         Apihandler.sharedInstance.getApiForWeather(lat: lat, lot: lot) { (Weather, error) in
             if Weather != nil{
-                //DispatchQueue.main.async {
                 self.curWeather = Weather!
-                self.tblView.reloadData()
-                    //print(self.curWeather)
-                //}
+                print(lat,lot)
+            }else{
+                print("error found!")
             }
-            print("error found!")
         }
     }
+    @IBAction func locationBtnClick(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LocationViewController")
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func earthquakeBtnClick(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "EarthquakeViewController")
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 }
+
+
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +83,27 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
         }
         return cell!
             
+    }
+}
+
+
+extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return curWeather?.daily.data.count ?? 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = colView.dequeueReusableCell(withReuseIdentifier: "colCell", for: indexPath) as? WeatherCollectionViewCell
+        let signTemp = String(format:"%@", "\u{00B0}") as String
+        if let tempObj = curWeather?.daily.data[indexPath.row]{
+            var myMilliseconds: UnixTime = tempObj.time
+            cell?.hiTempLbl.text = "H: \(String(tempObj.temperatureMax))\(signTemp)F"
+            cell?.lowTempLbl.text = "L: \(String(tempObj.temperatureMin))\(signTemp)F"
+            cell?.timezoneLbl.text = curWeather?.timezone
+            cell?.dateLbl.text = myMilliseconds.toDay
+            
+        }
+        return cell!
     }
     
     

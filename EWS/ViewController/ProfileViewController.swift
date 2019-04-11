@@ -57,8 +57,6 @@ class ProfileViewController:  FormViewController{
                 }
             }
         }
-        
-        
     }
     
     func createProfileForm(){

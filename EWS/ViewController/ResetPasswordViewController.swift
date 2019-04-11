@@ -8,8 +8,6 @@
 
 import UIKit
 import Eureka
-import FirebaseAuth
-import FirebaseDatabase
 
 class ResetPasswordViewController: FormViewController {
 
@@ -61,11 +59,16 @@ class ResetPasswordViewController: FormViewController {
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< ButtonRow() {
                 $0.title = "Reset"
                 }.onCellSelection({ (cell, row) in
-                    self.resetPasswordUserAccount()
-                    //self.dismiss(animated: true, completion: nil)
+                    FirebaseApiHandler.sharedInstance.resetPasswordUserAccount(email: self.form.values()["emailRow"] as! String, completionHandler: { (error) in
+                        print("Error in reset password")
+                    })
                     self.navigationController?.popViewController(animated: true)
                 })
                 .cellSetup { cell, row in
@@ -74,12 +77,6 @@ class ResetPasswordViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
-        }
-    }
-    
-    func resetPasswordUserAccount(){
-        Auth.auth().sendPasswordReset(withEmail: form.values()["emailRow"] as! String) { (error) in
-            print(error?.localizedDescription)
         }
     }
 

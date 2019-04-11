@@ -8,7 +8,11 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import CoreLocation
+import GooglePlaces
+import GoogleMaps
 
 var lat : Double = 0
 var lot : Double = 0
@@ -18,12 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
     var window: UIWindow?
     var locationManager = CLLocationManager()
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        GMSPlacesClient.provideAPIKey(client_key)
+        GMSServices.provideAPIKey(client_key)
+        
         FirebaseApp.configure()
         setupLocation()
+        if (Auth.auth().currentUser != nil) {
+            let ctrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+            self.window?.rootViewController = ctrl
+        }
         return true
     }
 
@@ -50,10 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
     }
     
     func setupLocation(){
-        locationManager.requestAlwaysAuthorization()
+        //locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-        if CLLocationManager.authorizationStatus() == .authorizedAlways{
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
             locationManager.startUpdatingLocation()
         }
     }

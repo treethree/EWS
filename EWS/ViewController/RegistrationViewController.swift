@@ -8,17 +8,14 @@
 
 import UIKit
 import Eureka
-import FirebaseAuth
-import FirebaseDatabase
 
 class RegistrationViewController: FormViewController {
-    var ref: DatabaseReference!
+    var userInfo : UserModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign Up"
         setBackgroundImage("bgimage", contentMode: .scaleAspectFit)
-        ref = Database.database().reference()
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
@@ -58,6 +55,10 @@ class RegistrationViewController: FormViewController {
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< NameRow("lastNameRow") {
                 $0.placeholder = "Last Name"
                 $0.add(rule: RuleRequired())
@@ -86,6 +87,10 @@ class RegistrationViewController: FormViewController {
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< EmailRow("emailRow") {
                 $0.placeholder = "Email"
                 $0.add(rule: RuleRequired())
@@ -113,6 +118,10 @@ class RegistrationViewController: FormViewController {
                             row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
                         }
                     }
+            }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
             }
             <<< PasswordRow("passwordRow") {
                 $0.placeholder = "Password"
@@ -144,6 +153,10 @@ class RegistrationViewController: FormViewController {
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< PasswordRow("confirmpwRow") {
                 $0.placeholder = "Confirm Password"
                 $0.add(rule: RuleEqualsToRow(form: form, tag: "passwordRow"))
@@ -171,6 +184,10 @@ class RegistrationViewController: FormViewController {
                         }
                     }
         }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< SegmentedRow<String>("genderRow") { $0.options = ["Male", "Female"] }
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
@@ -183,30 +200,12 @@ class RegistrationViewController: FormViewController {
 
     @IBAction func SignUpBtnClick(_ sender: UIButton) {
         self.view.endEditing(true)
-        let errors = form.validate()
-        print(errors)
-        print(form.values())
-        createUserAccount()
-        //dismiss(animated: true, completion: nil)
-       
-    }
-    
-    func createUserAccount(){
         let formVal = form.values()
-        Auth.auth().createUser(withEmail: formVal["emailRow"] as! String, password: formVal["passwordRow"] as! String) { (result, error) in
-            if error == nil{
-                if let user = result?.user{
-                    let dict = ["FirstName":formVal["firstNameRow"], "LastName" : formVal["lastNameRow"],"Email": user.email, "Gender" : formVal["genderRow"],"Latitude" : lat, "Longitude" : lot]
-                    self.ref.child("User").child(user.uid).setValue(dict)
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-            }else{
-                print(error?.localizedDescription)
-            }
+        userInfo = UserModel.init(firstName: formVal["firstNameRow"] as? String, lastName: formVal["lastNameRow"] as? String, email: formVal["emailRow"] as? String, gender: formVal["genderRow"] as? String, password: formVal["passwordRow"] as? String, latitude: String(lat), longitude: String(lot))
+        FirebaseApiHandler.sharedInstance.signUpUserAccount(userModel: userInfo!) { (error) in
+            print("Error in sign up")
         }
+        self.navigationController?.popViewController(animated: true)
     }
-    
 }
 
