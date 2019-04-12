@@ -33,12 +33,12 @@ class HomeViewController: BaseViewController {
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
-        getCurrentUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //print(lat,lot)
         callWeatherAPI(lat: lat, lot: lot)
+        getCurrentUser()
     }
     
     func getCurrentUser(){
@@ -48,6 +48,7 @@ class HomeViewController: BaseViewController {
             FirebaseApiHandler.sharedInstance.getUserImg(id: self.curUser!.uid, completionHandler: { (data, error) in
                 if data != nil{
                     self.profileImgView.image = UIImage(data : data!)
+                    self.profileImgView.roundedImage()
                 }else{
                     print(error)
                 }
@@ -92,12 +93,17 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
         
         if let tempObj = curWeather?.daily.data[indexPath.row]{
             var myMilliseconds: UnixTime = tempObj.time
-        
+            
             cell?.tempLbl.text = "H: \(String(tempObj.temperatureMax))\(signTemp)F / L: \(String(tempObj.temperatureMin))\(signTemp)F"
             cell?.timezoneLbl.text = curWeather?.timezone
             cell?.summaryLbl.text = curWeather?.daily.summary
             cell?.dateLbl.text = myMilliseconds.toDay
             cell?.timeLbl.text = myMilliseconds.toHour
+            cell?.iconImgView.image = UIImage(named: tempObj.icon)
+            cell?.iconImgView.roundedImage()
+            cell!.layer.borderWidth = 1.0
+            cell!.layer.borderColor = UIColor.white.cgColor
+            
         }
         return cell!
             
@@ -119,7 +125,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell?.lowTempLbl.text = "L: \(String(tempObj.temperatureMin))\(signTemp)F"
             cell?.timezoneLbl.text = curWeather?.timezone
             cell?.dateLbl.text = myMilliseconds.toDay
-            
+            cell?.imgView.image = UIImage(named: tempObj.icon)
+            cell!.layer.borderWidth = 1.0
+            cell!.layer.borderColor = UIColor.white.cgColor
         }
         return cell!
     }

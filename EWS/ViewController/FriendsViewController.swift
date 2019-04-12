@@ -67,6 +67,14 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource{
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lnameLbl.text = "Last Name: \(userObj.lname)"
         cell?.deleteBtnOutlet.tag = indexPath.row
+        FirebaseApiHandler.sharedInstance.getUserImg(id: users[indexPath.row].uid) { (data, error) in
+            if data != nil{
+                cell?.imgView.image = UIImage(data : data!)
+                cell?.imgView.roundedImage()
+            }else{
+                print(error)
+            }
+        }
         return cell!
     }
 }

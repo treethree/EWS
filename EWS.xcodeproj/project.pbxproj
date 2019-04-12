@@ -18,6 +18,9 @@
 		2F07496E225D346000215677 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496D225D346000215677 /* FriendsViewController.swift */; };
 		2F074970225D346B00215677 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496F225D346B00215677 /* SettingViewController.swift */; };
 		2F074978225D4C6600215677 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074977225D4C6600215677 /* WeatherTableViewCell.swift */; };
+		2F60F45F2260EC1900EE4D28 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */; };
+		2F60F4612260EDD100EE4D28 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */; };
+		2F60F4632260F87100EE4D28 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4622260F87100EE4D28 /* PostData.swift */; };
 		2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F750379225BF98F0045570B /* AppDelegate.swift */; };
 		2F75037C225BF98F0045570B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75037B225BF98F0045570B /* ViewController.swift */; };
 		2F75037F225BF98F0045570B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F75037D225BF98F0045570B /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		2F07496D225D346000215677 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		2F07496F225D346B00215677 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2F074977225D4C6600215677 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		2F60F4622260F87100EE4D28 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		2F750376225BF98F0045570B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F750379225BF98F0045570B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F75037B225BF98F0045570B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */,
+				2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */,
+				2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 				2FBC7252225D787100B58065 /* Weather.swift */,
 				2FBC725E225E5F9200B58065 /* UserModel.swift */,
 				2FBC7274225FA2AA00B58065 /* Earthquake.swift */,
+				2F60F4622260F87100EE4D28 /* PostData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,10 +427,12 @@
 				2F074964225C5F0F00215677 /* ResetPasswordViewController.swift in Sources */,
 				2FBC7253225D787100B58065 /* Weather.swift in Sources */,
 				2FBC725D225E513B00B58065 /* WeatherCollectionViewCell.swift in Sources */,
+				2F60F4632260F87100EE4D28 /* PostData.swift in Sources */,
 				2F074968225D11FB00215677 /* MainTabBarViewController.swift in Sources */,
 				2FBC726E225ED20E00B58065 /* Constant.swift in Sources */,
 				2FBC725B225E428C00B58065 /* FirebaseApiHandler.swift in Sources */,
 				2F074962225C50EE00215677 /* RegistrationViewController.swift in Sources */,
+				2F60F4612260EDD100EE4D28 /* ButtonExtension.swift in Sources */,
 				2FBC7277226037E300B58065 /* FriendsTableViewCell.swift in Sources */,
 				2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */,
 				2FBC7275225FA2AA00B58065 /* Earthquake.swift in Sources */,
@@ -438,6 +449,7 @@
 				2F074978225D4C6600215677 /* WeatherTableViewCell.swift in Sources */,
 				2FBC7259225DACB200B58065 /* UsersTableViewCell.swift in Sources */,
 				2F074966225C60AA00215677 /* HomeViewController.swift in Sources */,
+				2F60F45F2260EC1900EE4D28 /* ImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

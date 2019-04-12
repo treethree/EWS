@@ -45,6 +45,15 @@ class UsersViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tblView.reloadData()
             }
+//            for user in self.users{
+//                FirebaseApiHandler.sharedInstance.getUserImg(id: user.uid, completionHandler: { (data, error) in
+//                    if data != nil{
+//                        self.profileImgView.image = UIImage(data : data!)
+//                    }else{
+//                        print(error)
+//                    }
+//                })
+//            }
         }
     }
     
@@ -73,6 +82,14 @@ extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
         let userObj = users[indexPath.row]
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lNameLbl.text = "Last Name: \(userObj.lname)"
+        FirebaseApiHandler.sharedInstance.getUserImg(id: users[indexPath.row].uid) { (data, error) in
+            if data != nil{
+                cell?.imgView.image = UIImage(data : data!)
+                cell?.imgView.roundedImage()
+            }else{
+                print(error)
+            }
+        }
         //cell?.imgView.image = getUserImage(uid: uidObj)
         cell?.addFriendLbl.tag = indexPath.row
         return cell!
