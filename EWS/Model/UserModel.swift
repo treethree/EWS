@@ -53,6 +53,7 @@ struct UserModel{
         password = info["password"] as! String
         self.uid = uid
     }
+
 }
 
 

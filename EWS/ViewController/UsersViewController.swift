@@ -13,13 +13,7 @@ import FirebaseStorage
 
 class UsersViewController: UIViewController {
     var ref: DatabaseReference!
-    var users : [UserModel]?{
-        didSet{
-            DispatchQueue.main.async {
-                self.tblView.reloadData()
-            }
-        }
-    }
+    var users = [UserModel]()
     //var users = [[String : Any]]()
     var userID = [String]()
     var userimg = [UIImage]()
@@ -31,8 +25,8 @@ class UsersViewController: UIViewController {
 //        FirebaseApiHandler.sharedInstance.getUsers { (users) in
 //            print(users)
 //        }
-        //getAllUsers()
-        getUserImage()
+        getAllUsers()
+        //getUserImage()
         
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
@@ -42,7 +36,6 @@ class UsersViewController: UIViewController {
     @IBAction func addFriendBtnClick(_ sender: UIButton) {
         
         //sender.tag
-        
 //        FirebaseApiHandler.sharedInstance.getUsers { (users) in
 //            users
 //        }
@@ -53,7 +46,11 @@ class UsersViewController: UIViewController {
     
     func getAllUsers(){
         FirebaseApiHandler.sharedInstance.getUsers { (usermodel) in
-            self.users = usermodel
+            self.users = usermodel!
+            DispatchQueue.main.async {
+                self.tblView.reloadData()
+            }
+            
         }
     }
     
@@ -95,12 +92,12 @@ class UsersViewController: UIViewController {
 
 extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users!.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblView.dequeueReusableCell(withIdentifier: "usersCell") as? UsersTableViewCell
-        let userObj = users![indexPath.row]
+        let userObj = users[indexPath.row]
         //let uidObj = userID[indexPath.row]
 //        cell?.fnameLbl.text = "First Name: \(userObj["FirstName"]!)"
 //        cell?.lNameLbl.text = "Last Name: \(userObj["LastName"]!)"

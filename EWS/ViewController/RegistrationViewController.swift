@@ -8,13 +8,17 @@
 
 import UIKit
 import Eureka
+import FirebaseAuth
+import FirebaseDatabase
 
 class RegistrationViewController: FormViewController {
     var userInfo : UserModel?
+    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign Up"
+        ref = Database.database().reference()
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
@@ -200,9 +204,25 @@ class RegistrationViewController: FormViewController {
     @IBAction func SignUpBtnClick(_ sender: UIButton) {
         self.view.endEditing(true)
         let formVal = form.values()
-        userInfo = UserModel("1", info: formVal)
-        FirebaseApiHandler.sharedInstance.signUpUserAccount(userModel: userInfo!) { (error) in
-            print("Error in sign up")
+        
+        Auth.auth().createUser(withEmail: formVal["emailRow"] as! String, password: formVal["passwordRow"] as! String) { (result, error) in
+            if error == nil{
+                if let user = result?.user{
+                    
+                    let dict = ["fname":formVal["firstNameRow"],
+                                "lname" : formVal["lastNameRow"],
+                                "email": formVal["emailRow"],
+                                "dob" : "", "phone" : "",
+                                "gender" : formVal["genderRow"],
+                                "location" : "",
+                                "latitude" : lat,
+                                "longitude" : lot,
+                                "password" : formVal["passwordRow"],
+                                "uid" : user.uid ]
+                    self.ref.child("User").child(user.uid).setValue(dict)
+                }
+            }
+            
         }
         self.navigationController?.popViewController(animated: true)
     }

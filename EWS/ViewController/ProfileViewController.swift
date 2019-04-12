@@ -14,11 +14,7 @@ import FirebaseStorage
 
 class ProfileViewController:  FormViewController{
     var ref: DatabaseReference!
-    var currentUser : [String: Any]?{
-        didSet{
-            createProfileForm()
-        }
-    }
+    var currentUser = [String: Any]()
     @IBOutlet weak var profileImgView: UIImageView!
 
     override func viewDidLoad() {
@@ -33,29 +29,29 @@ class ProfileViewController:  FormViewController{
     }
     
     func getCurrentUserInfo(){
-        DispatchQueue.main.async {
             if let user = Auth.auth().currentUser{
                 self.ref.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
                     if let userObj = snapshot.value as? [String:Any]{
                         print(userObj)
                         self.currentUser = userObj
+                        self.createProfileForm()
+//                        if self.profileImgView.image != nil{
+//                            self.getUserImage()
+//                        }
                     }
                 }
             }
-        }
     }
     //Update firebase database
     @IBAction func saveBtnClick(_ sender: UIButton) {
         let formvalues = self.form.values()
-        //print(self.form.values())
-        DispatchQueue.main.async {
             if let user = Auth.auth().currentUser{
                 self.ref.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
-                    let dict = ["Firstname": formvalues["firstNameRow"],"LastName": formvalues["lastNameRow"], "Email": formvalues["emailRow"]]
+                    let dict = ["fname": formvalues["firstNameRow"],"lname": formvalues["lastNameRow"], "email": formvalues["emailRow"]]
                     self.ref.child("User").child(user.uid).updateChildValues(dict)
                 }
             }
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     func createProfileForm(){
@@ -72,7 +68,7 @@ class ProfileViewController:  FormViewController{
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
-                    row.value = self.currentUser!["FirstName"] as? String
+                    row.value = self.currentUser["fname"] as? String
                 }
                 .onRowValidationChanged { cell, row in
                     let rowIndex = row.indexPath!.row
@@ -101,7 +97,7 @@ class ProfileViewController:  FormViewController{
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
-                    row.value = self.currentUser!["LastName"] as? String
+                    row.value = self.currentUser["lname"] as? String
                 }
                 .onRowValidationChanged { cell, row in
                     let rowIndex = row.indexPath!.row
@@ -130,7 +126,7 @@ class ProfileViewController:  FormViewController{
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
-                    row.value = self.currentUser!["Email"] as? String
+                    row.value = self.currentUser["email"] as? String
                 }
                 .onRowValidationChanged { cell, row in
                     let rowIndex = row.indexPath!.row

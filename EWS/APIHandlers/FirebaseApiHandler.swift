@@ -149,9 +149,9 @@ class FirebaseApiHandler: NSObject {
         Auth.auth().createUser(withEmail: userModel.email, password: userModel.password!) { (result, error) in
             if error == nil{
                 if let user = result?.user{
-                    let dict = UserModel(userModel.uid, info: user as! [String:Any])
+                    //let dict = UserModel(userModel.uid, info: user as! [String:Any])
                     
-//                    let dict = ["FirstName":userModel.firstName, "LastName" : userModel.lastName,"Email": userModel.email, "Gender" : userModel.gender,"Latitude" : userModel.latitude, "Longitude" : userModel.longitude]
+                    let dict = ["fname":userModel.fname, "lname" : userModel.lname,"email": userModel.email, "dob" : "", "phone" : "","gender" : userModel.gender,"location" : "", "latitude" : userModel.latitude, "longitude" : userModel.longitude, "password" : "", "uid" : user.uid ] as [String : Any]
                     self.ref.child("User").child(user.uid).setValue(dict)
                 }
             }else{
