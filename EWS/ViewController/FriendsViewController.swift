@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TWMessageBarManager
 
 class FriendsViewController: UIViewController {
 
@@ -36,6 +37,11 @@ class FriendsViewController: UIViewController {
     @IBAction func deleteFriendBtnClick(_ sender: UIButton) {
         FirebaseApiHandler.sharedInstance.removeFriend(friendId: users[sender.tag].uid) { (error) in
             print(error)
+            self.users.remove(at: sender.tag)
+            DispatchQueue.main.async {
+                self.tblView.reloadData()
+            }
+            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Delete friend", description: "You successfully delete a friend!", type: .success)
         }
     }
     
@@ -44,6 +50,7 @@ class FriendsViewController: UIViewController {
         DispatchQueue.main.async {
             self.tblView.reloadData()
         }
+        TWMessageBarManager.sharedInstance().showMessage(withTitle: "Refresh", description: "You successfully refresh friend list!", type: .success)
     }
     
 }

@@ -14,10 +14,14 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var colView: UICollectionView!
     
+    @IBOutlet weak var profileImgView: UIImageView!
+    @IBOutlet weak var userEmailLbl: UILabel!
+    var curUser : UserModel?
     var curWeather : Weather?
     {
         didSet{
             DispatchQueue.main.async {
+//                FirebaseApiHandler.sharedInstance.getUserImg(id: <#T##String#>, completionHandler: <#T##(Data?, Error?) -> Void#>)
                 self.tblView.reloadData()
                 self.colView.reloadData()
             }
@@ -29,18 +33,33 @@ class HomeViewController: BaseViewController {
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
+        getCurrentUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(lat,lot)
+        //print(lat,lot)
         callWeatherAPI(lat: lat, lot: lot)
+    }
+    
+    func getCurrentUser(){
+        FirebaseApiHandler.sharedInstance.getCurrentUserInfo { (userModel) in
+            self.curUser = userModel
+            self.userEmailLbl.text = self.curUser?.email
+            FirebaseApiHandler.sharedInstance.getUserImg(id: self.curUser!.uid, completionHandler: { (data, error) in
+                if data != nil{
+                    self.profileImgView.image = UIImage(data : data!)
+                }else{
+                    print(error)
+                }
+            })
+        }
     }
 
     func callWeatherAPI(lat: Double, lot: Double)  {
         WeatherApiHandler.sharedInstance.getApiForWeather(lat: lat, lot: lot) { (Weather, error) in
             if Weather != nil{
                 self.curWeather = Weather!
-                print(lat,lot)
+                //print(lat,lot)
             }else{
                 print("error found!")
             }

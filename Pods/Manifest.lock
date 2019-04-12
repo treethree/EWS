@@ -88,6 +88,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - TWMessageBarManager (1.8.1)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.12.0)
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - TWMessageBarManager
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -122,6 +124,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - TWMessageBarManager
 
 SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
@@ -143,7 +146,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
 
-PODFILE CHECKSUM: db67adc259a4bdbf4949e68a9483adaf8472dc4e
+PODFILE CHECKSUM: cd8f618f16b1817c92c4da1b33843ffb088ceb28
 
 COCOAPODS: 1.6.1

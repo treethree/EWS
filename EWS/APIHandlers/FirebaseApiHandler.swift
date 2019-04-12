@@ -81,6 +81,17 @@ class FirebaseApiHandler: NSObject {
         }
     }
     
+    func getCurrentUserInfo(completionHandler : @escaping (UserModel?)->Void){
+        if let user = Auth.auth().currentUser{
+            self.ref.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
+                if let userObj = snapshot.value as? [String:Any]{
+                    var userModel = UserModel(user.uid, info: userObj)
+                    completionHandler(userModel)
+                }
+            }
+        }
+    }
+    
     func getUsers(completionHandler : @escaping ([UserModel]?)->Void) {
         let userQ = Auth.auth().currentUser
         

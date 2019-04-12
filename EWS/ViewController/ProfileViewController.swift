@@ -15,6 +15,7 @@ import FirebaseStorage
 class ProfileViewController:  FormViewController{
     var ref: DatabaseReference!
     var currentUser = [String: Any]()
+    var userModel : UserModel?
     @IBOutlet weak var profileImgView: UIImageView!
 
     override func viewDidLoad() {
@@ -25,8 +26,13 @@ class ProfileViewController:  FormViewController{
         tableView.bounces = false
 
         getCurrentUserInfo()
-        getUserImage()
     }
+//    func getCurrentUserInfo(){
+//        FirebaseApiHandler.sharedInstance.getCurrentUserInfo { (curUser) in
+//            self.userModel = curUser!
+//            //self.currentUser = curUser
+//        }
+//    }
     
     func getCurrentUserInfo(){
             if let user = Auth.auth().currentUser{
@@ -35,9 +41,7 @@ class ProfileViewController:  FormViewController{
                         print(userObj)
                         self.currentUser = userObj
                         self.createProfileForm()
-//                        if self.profileImgView.image != nil{
-//                            self.getUserImage()
-//                        }
+                        self.getUserImage()
                     }
                 }
             }
@@ -181,14 +185,23 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
         }
     }
     //get image from firebase storage
+//    func getUserImage(){
+//        if let user = Auth.auth().currentUser{
+//            let imagename = "UserImage/\(String(user.uid)).jpeg"
+//            var storageRef = Storage.storage().reference()
+//            storageRef = storageRef.child(imagename)
+//            storageRef.getData(maxSize: 1*300*300) { (data, error) in
+//                let img = UIImage(data: data!)
+//                self.profileImgView.image = img
+//            }
+//        }
+//    }
     func getUserImage(){
-        if let user = Auth.auth().currentUser{
-            let imagename = "UserImage/\(String(user.uid)).jpeg"
-            var storageRef = Storage.storage().reference()
-            storageRef = storageRef.child(imagename)
-            storageRef.getData(maxSize: 1*300*300) { (data, error) in
-                let img = UIImage(data: data!)
-                self.profileImgView.image = img
+        FirebaseApiHandler.sharedInstance.getUserImg(id: currentUser["uid"] as! String) { (data, error) in
+            if data != nil{
+                self.profileImgView.image = UIImage(data : data!)
+            }else{
+                print(error)
             }
         }
     }

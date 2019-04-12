@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import TWMessageBarManager
 
 class UsersViewController: UIViewController {
     var ref: DatabaseReference!
@@ -34,6 +35,8 @@ class UsersViewController: UIViewController {
         FirebaseApiHandler.sharedInstance.addFriend(friendId: users[sender.tag].uid) { (error) in
             print(error)
         }
+        TWMessageBarManager.sharedInstance().showMessage(withTitle: "Add friend", description: "You successfully add a new friend!", type: .success)
+        
     }
     
     func getAllUsers(){
