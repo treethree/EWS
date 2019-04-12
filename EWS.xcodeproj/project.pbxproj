@@ -40,6 +40,7 @@
 		2FBC7271225F87DB00B58065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7270225F87DB00B58065 /* BaseViewController.swift */; };
 		2FBC7273225FA17500B58065 /* EarthquakeApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7272225FA17500B58065 /* EarthquakeApiHandler.swift */; };
 		2FBC7275225FA2AA00B58065 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7274225FA2AA00B58065 /* Earthquake.swift */; };
+		2FBC7277226037E300B58065 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7276226037E300B58065 /* FriendsTableViewCell.swift */; };
 		FD11DA03930E6AFF50C452AE /* Pods_EWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		2FBC7270225F87DB00B58065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FBC7272225FA17500B58065 /* EarthquakeApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeApiHandler.swift; sourceTree = "<group>"; };
 		2FBC7274225FA2AA00B58065 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
+		2FBC7276226037E300B58065 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEE6D6F5353A869FB9BAF2C /* Pods-EWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.debug.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.debug.xcconfig"; sourceTree = "<group>"; };
 		F6AD22029D09A8082DF27A39 /* Pods-EWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.release.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				2F074977225D4C6600215677 /* WeatherTableViewCell.swift */,
 				2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */,
 				2FBC725C225E513B00B58065 /* WeatherCollectionViewCell.swift */,
+				2FBC7276226037E300B58065 /* FriendsTableViewCell.swift */,
 			);
 			path = CustomViewCell;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				2FBC726E225ED20E00B58065 /* Constant.swift in Sources */,
 				2FBC725B225E428C00B58065 /* FirebaseApiHandler.swift in Sources */,
 				2F074962225C50EE00215677 /* RegistrationViewController.swift in Sources */,
+				2FBC7277226037E300B58065 /* FriendsTableViewCell.swift in Sources */,
 				2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */,
 				2FBC7275225FA2AA00B58065 /* Earthquake.swift in Sources */,
 				2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */,

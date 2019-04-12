@@ -8,8 +8,6 @@
 
 import UIKit
 import Eureka
-import FirebaseAuth
-import FirebaseDatabase
 
 class LoginViewController: FormViewController {
 
@@ -23,6 +21,10 @@ class LoginViewController: FormViewController {
         
         createLoginForm()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     
     func createLoginForm(){
         form +++ Section()

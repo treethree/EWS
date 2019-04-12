@@ -14,7 +14,6 @@ import FirebaseStorage
 class UsersViewController: UIViewController {
     var ref: DatabaseReference!
     var users = [UserModel]()
-    //var users = [[String : Any]]()
     var userID = [String]()
     var userimg = [UIImage]()
     @IBOutlet weak var tblView: UITableView!
@@ -22,10 +21,8 @@ class UsersViewController: UIViewController {
         super.viewDidLoad()
         ref = Database.database().reference()
         
-//        FirebaseApiHandler.sharedInstance.getUsers { (users) in
-//            print(users)
-//        }
         getAllUsers()
+        tblView.reloadData()
         //getUserImage()
         
         tblView.backgroundColor = .clear
@@ -34,14 +31,9 @@ class UsersViewController: UIViewController {
     }
 
     @IBAction func addFriendBtnClick(_ sender: UIButton) {
-        
-        //sender.tag
-//        FirebaseApiHandler.sharedInstance.getUsers { (users) in
-//            users
-//        }
-//        FirebaseApiHandler.sharedInstance.addFriend(friendId: users) { (error) in
-//            print(error)
-//        }
+        FirebaseApiHandler.sharedInstance.addFriend(friendId: users[sender.tag].uid) { (error) in
+            print(error)
+        }
     }
     
     func getAllUsers(){
@@ -50,30 +42,8 @@ class UsersViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tblView.reloadData()
             }
-            
         }
     }
-    
-    //get all users
-//    func getAllUsers(){
-//            self.ref.child("User").observeSingleEvent(of: .value) { (snapshot) in
-//                if let snap = snapshot.value as? [String:Any]{
-//                for record in snap{
-//                    if let uInfo = record.value as? [String: Any]{
-//                        self.users.append(uInfo)
-//
-//                        self.tblView.reloadData()
-//                        //print(self.users)
-//                        }
-//
-//                    self.userID.append(record.key)
-//                    self.tblView.reloadData()
-//                    //print(self.userID)
-//                    }
-//
-//                }
-//            }
-//    }
     
     //get image from firebase storage
     func getUserImage(){
@@ -98,9 +68,6 @@ extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblView.dequeueReusableCell(withIdentifier: "usersCell") as? UsersTableViewCell
         let userObj = users[indexPath.row]
-        //let uidObj = userID[indexPath.row]
-//        cell?.fnameLbl.text = "First Name: \(userObj["FirstName"]!)"
-//        cell?.lNameLbl.text = "Last Name: \(userObj["LastName"]!)"
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lNameLbl.text = "Last Name: \(userObj.lname)"
         //cell?.imgView.image = getUserImage(uid: uidObj)

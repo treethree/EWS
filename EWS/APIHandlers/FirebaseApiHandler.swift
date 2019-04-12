@@ -61,10 +61,8 @@ class FirebaseApiHandler: NSObject {
                     self.ref.child("User").child(friend.key).observeSingleEvent(of: .value) { (friendSnapShot) in
                         guard let singleFriend = friendSnapShot.value as? Dictionary<String, Any> else {return}
                         
-                        var userModel = UserModel(friend.key,info: friend.value as! [String : Any])
-                                        
+                        var userModel = UserModel(friend.key,info: singleFriend)
 
-                        
                         self.getUserImg(id: userModel.uid, completionHandler: { (data, error) in
                             if error == nil && !(data == nil){
                                 userModel.image = UIImage(data: data!)
