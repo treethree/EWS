@@ -19,10 +19,11 @@ class LoginViewController: FormViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         
-        createLoginForm()
+        //createLoginForm()
     }
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        createLoginForm()
     }
     
     

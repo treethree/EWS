@@ -32,8 +32,10 @@ class SettingViewController: BaseViewController {
     
     @IBAction func logoutBtnClick(_ sender: UIButton) {
         signOutUserAccount()
+        //dismiss(animated: true, completion: nil)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-        navigationController?.pushViewController(vc!, animated: true)
+        //navigationController?.pushViewController(vc!, animated: true)
+        present(vc!, animated: true, completion: nil)
         print("lol")
     }
     

@@ -16,24 +16,114 @@ class FirebaseApiHandler: NSObject {
     private override init() {}
     var ref = Database.database().reference()
     
-//    func getAllUsers(completionHandler : @escaping ([UserModel]?)->Void){
-//        self.ref.child("User").observeSingleEvent(of: .value) { (snapshot) in
-//            if let snap = snapshot.value as? [String:Any]{
-//                for record in snap{
-//                    if let uInfo = record.value as? [String: Any]{
-//                        self.users.append(uInfo)
-//                        
-//                        self.tblView.reloadData()
-//                        //print(self.users)
-//                    }
-//                    
-//                    self.userID.append(record.key)
-//                    self.tblView.reloadData()
-//                    //print(self.userID)
+    func getPosts(completionHandler: @escaping ([[String:Any]]?)->Void) {
+        
+        var postArr = [[String:Any]]()
+        let postListdispatchGroup = DispatchGroup()
+        let fetchUserComponentsGroup = DispatchGroup()
+        self.ref.child("Post").observeSingleEvent(of: .value) {
+            (snapshot) in
+            if let posts = snapshot.value as? [String:Any] {
+                for record in posts {
+                    postListdispatchGroup.enter()
+                    let key = record.key
+                    let post = posts[key] as! [String:Any]
+                    var postDict = [String:Any]()
+                    fetchUserComponentsGroup.enter()
+                    self.getUserByID(userID: post["userID"] as! String, completionHandler: { (user) in
+                        postDict["user"] = user
+                        fetchUserComponentsGroup.leave()
+                    })
+                    postDict["postID"] = key
+                    postDict["comment"] = post["describtion"]
+                    postDict["timestamp"] = post["timestamp"]
+                    postArr.append(postDict)
+                    //self.getPostImg(id: key, completionHandler: { (data, error) in
+                        //if error == nil && data != nil {
+                           // postDict["postImg"] = UIImage(data: data!)
+//                        } else {
+//                            postDict["postImg"] = nil
+//                        }
+//                        fetchUserComponentsGroup.notify(queue: .main) {
+//                            postArr.append(postDict)
+//                            postListdispatchGroup.leave()
+//                        }
+                    //})
+                }
+                completionHandler(postArr)
+                
+//                postListdispatchGroup.notify(queue: .main) {
+//                    completionHandler(postArr)
 //                }
-//            }
-//        }
-//    }
+            }else {
+                completionHandler(nil)
+            }
+        }
+    }
+    
+    func getUserByID(userID: String, completionHandler : @escaping (UserModel?)->Void) {
+        
+        ref.child("User").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snap = snapshot.value as? [String:Any]
+                else {
+                    completionHandler(nil)
+                    return
+            }
+            self.getUserImg(id: userID, completionHandler: { (data, error) in
+                if data != nil{
+                    let use = UserModel(userID, info: snap)
+                }
+            })
+            
+//            self.getUserImg(id: userID, completionHandler: { (data, error) in
+//                let use = UserModel(userID: userID, fname: snap["FirstName"] as! String, lname: snap["Lastname"] as! String, email: snap["Email"] as! String, address: snap["Address"] as! String , phone: snap["Phone"] as! String, password: nil, image: UIImage(data: data ?? Data()), latitude: (37.2131 as! Double), longitude: (-121.3232 as! Double))
+//                completionHandler(use)
+//            })
+        })
+    }
+    
+    func getPostImg(id : String,completionHandler : @escaping (Data?,Error?)->Void) {
+        let imageName = "Post/\(String(describing: id)).jpeg"
+        var storageRef : StorageReference?
+        storageRef = Storage.storage().reference()
+        storageRef = storageRef?.child(imageName)
+        storageRef?.getData(maxSize: 1*300*300, completion: { (data, error) in
+            completionHandler(data,error)
+        })
+    }
+    
+    func addPost(img : UIImage , postdesc : String? , completionHandler: @escaping (Error?)->Void) {
+        let user = Auth.auth().currentUser
+        let postKey = self.ref.child("Post").childByAutoId().key
+        let postDict = ["userID" : user?.uid, "describtion" : postdesc ?? "" , "timestamp" : "\(NSDate().timeIntervalSince1970)"]
+        
+        self.ref.child("Post").child(postKey!).setValue(postDict) { (error, ref) in
+            if error != nil {
+                completionHandler(error)
+            } else {
+                self.savePostImg(id: postKey!, img: img, completionHandler: { (error) in
+                    if error != nil {
+                        completionHandler(error)
+                    } else {
+                        completionHandler(nil)
+                    }
+                })
+            }
+        }
+    }
+    
+    func savePostImg(id : String,img :UIImage,completionHandler : @escaping (Error?)->Void) {
+        let image = img
+        let imgData = image.jpegData(compressionQuality: 0)
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        let imgName = "Post/\(String(describing: id)).jpeg"
+        var storageRef = Storage.storage().reference()
+        storageRef = storageRef.child(imgName)
+        storageRef.putData(imgData!, metadata: metaData) { (data, error) in
+            completionHandler(error)
+        }
+    }
     
     func addFriend(friendId: String, completionHandler: @escaping (Error?)->Void) {
         let user = Auth.auth().currentUser

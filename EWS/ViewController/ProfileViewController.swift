@@ -55,7 +55,8 @@ class ProfileViewController:  FormViewController{
                     self.ref.child("User").child(user.uid).updateChildValues(dict)
                 }
             }
-        dismiss(animated: true, completion: nil)
+        
+        //dismiss(animated: true, completion: nil)
     }
     
     func createProfileForm(){

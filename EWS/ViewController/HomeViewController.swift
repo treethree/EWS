@@ -126,6 +126,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell?.timezoneLbl.text = curWeather?.timezone
             cell?.dateLbl.text = myMilliseconds.toDay
             cell?.imgView.image = UIImage(named: tempObj.icon)
+            //cell?.backgroundColor = UIColor(red: 0/255, green: 63/255, blue: 153/255, alpha: 1.0)
             cell!.layer.borderWidth = 1.0
             cell!.layer.borderColor = UIColor.white.cgColor
         }

@@ -21,6 +21,10 @@
 		2F60F45F2260EC1900EE4D28 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */; };
 		2F60F4612260EDD100EE4D28 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */; };
 		2F60F4632260F87100EE4D28 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4622260F87100EE4D28 /* PostData.swift */; };
+		2F60F465226105BB00EE4D28 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F464226105BB00EE4D28 /* FeedCollectionViewCell.swift */; };
+		2F60F4672261166E00EE4D28 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4662261166E00EE4D28 /* AddPostViewController.swift */; };
+		2F60F46922619A3D00EE4D28 /* FriendsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F46822619A3D00EE4D28 /* FriendsMapViewController.swift */; };
+		2F60F46B2261AD2100EE4D28 /* IconSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F46A2261AD2100EE4D28 /* IconSizeExtension.swift */; };
 		2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F750379225BF98F0045570B /* AppDelegate.swift */; };
 		2F75037C225BF98F0045570B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75037B225BF98F0045570B /* ViewController.swift */; };
 		2F75037F225BF98F0045570B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F75037D225BF98F0045570B /* Main.storyboard */; };
@@ -62,6 +66,10 @@
 		2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		2F60F4622260F87100EE4D28 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		2F60F464226105BB00EE4D28 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F60F4662261166E00EE4D28 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		2F60F46822619A3D00EE4D28 /* FriendsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMapViewController.swift; sourceTree = "<group>"; };
+		2F60F46A2261AD2100EE4D28 /* IconSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSizeExtension.swift; sourceTree = "<group>"; };
 		2F750376225BF98F0045570B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F750379225BF98F0045570B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F75037B225BF98F0045570B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,8 +130,10 @@
 				2F074963225C5F0F00215677 /* ResetPasswordViewController.swift */,
 				2F074965225C60AA00215677 /* HomeViewController.swift */,
 				2F074969225D337800215677 /* FeedViewController.swift */,
+				2F60F4662261166E00EE4D28 /* AddPostViewController.swift */,
 				2F07496B225D341600215677 /* UsersViewController.swift */,
 				2F07496D225D346000215677 /* FriendsViewController.swift */,
+				2F60F46822619A3D00EE4D28 /* FriendsMapViewController.swift */,
 				2F07496F225D346B00215677 /* SettingViewController.swift */,
 				2F074967225D11FB00215677 /* MainTabBarViewController.swift */,
 				2FBC7256225D953A00B58065 /* ProfileViewController.swift */,
@@ -139,6 +149,7 @@
 				2FBC7254225D8E9B00B58065 /* DateConverterExtension.swift */,
 				2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */,
 				2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */,
+				2F60F46A2261AD2100EE4D28 /* IconSizeExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +161,7 @@
 				2FBC7258225DACB200B58065 /* UsersTableViewCell.swift */,
 				2FBC725C225E513B00B58065 /* WeatherCollectionViewCell.swift */,
 				2FBC7276226037E300B58065 /* FriendsTableViewCell.swift */,
+				2F60F464226105BB00EE4D28 /* FeedCollectionViewCell.swift */,
 			);
 			path = CustomViewCell;
 			sourceTree = "<group>";
@@ -420,6 +432,10 @@
 			files = (
 				2FBC7264225E957000B58065 /* SpaceTableViewCell.swift in Sources */,
 				2F07495E225C435E00215677 /* LoginViewController.swift in Sources */,
+				2F60F4672261166E00EE4D28 /* AddPostViewController.swift in Sources */,
+				2F60F46B2261AD2100EE4D28 /* IconSizeExtension.swift in Sources */,
+				2F60F46922619A3D00EE4D28 /* FriendsMapViewController.swift in Sources */,
+				2F60F465226105BB00EE4D28 /* FeedCollectionViewCell.swift in Sources */,
 				2FBC725F225E5F9200B58065 /* UserModel.swift in Sources */,
 				2F074970225D346B00215677 /* SettingViewController.swift in Sources */,
 				2F75037C225BF98F0045570B /* ViewController.swift in Sources */,

@@ -21,6 +21,7 @@ class FriendsViewController: UIViewController {
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
         getFriend()
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func getFriend(){
@@ -32,6 +33,12 @@ class FriendsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func mapBtnClick(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FriendsMapViewController")
+        navigationController?.pushViewController(vc!, animated: true)
+        //present(vc!, animated: true, completion: nil)
     }
     
     @IBAction func deleteFriendBtnClick(_ sender: UIButton) {
