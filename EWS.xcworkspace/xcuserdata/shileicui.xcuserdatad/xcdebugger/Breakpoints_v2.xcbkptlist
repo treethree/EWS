@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EWS/APIHandlers/FirebaseApiHandler.swift"
-            timestampString = "576887175.337567"
+            filePath = "EWS/ViewController/FeedViewController.swift"
+            timestampString = "576905096.212778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "getPosts(completionHandler:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,91 +26,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EWS/APIHandlers/FirebaseApiHandler.swift"
-            timestampString = "576887175.338498"
+            timestampString = "576905096.213727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "getPosts(completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EWS/APIHandlers/FirebaseApiHandler.swift"
-            timestampString = "576887175.338968"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "getPosts(completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EWS/APIHandlers/FirebaseApiHandler.swift"
-            timestampString = "576887175.3394049"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "getPostImg(id:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EWS/APIHandlers/FirebaseApiHandler.swift"
-            timestampString = "576887175.339839"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "getPostImg(id:completionHandler:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "getUserByID(userID:completionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "EWS.FirebaseApiHandler.getPostImg(id: Swift.String, completionHandler: (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in EWS.FirebaseApiHandler.getUserByID(userID: Swift.String, completionHandler: (Swift.Optional&lt;EWS.UserModel&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "EWS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shileicui/Documents/Xcode_project_structured/Firebase/EWS/EWS/APIHandlers/FirebaseApiHandler.swift"
-                  timestampString = "576886323.061933"
+                  timestampString = "576904671.695202"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "705">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "762">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in EWS.FirebaseApiHandler.getPostImg(id: Swift.String, completionHandler: (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in EWS.FirebaseApiHandler.getUserByID(userID: Swift.String, completionHandler: (Swift.Optional&lt;EWS.UserModel&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "EWS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shileicui/Documents/Xcode_project_structured/Firebase/EWS/EWS/APIHandlers/FirebaseApiHandler.swift"
-                  timestampString = "576886323.064374"
+                  timestampString = "576904671.6992821"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "42">
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "45">
                </Location>
             </Locations>
          </BreakpointContent>

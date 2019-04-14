@@ -23,6 +23,9 @@ class FriendsViewController: UIViewController {
         getFriend()
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tblView.reloadData()
+    }
     
     func getFriend(){
         FirebaseApiHandler.sharedInstance.getFriends { (friendArr) in
