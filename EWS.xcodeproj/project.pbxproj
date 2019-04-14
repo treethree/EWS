@@ -48,6 +48,9 @@
 		2FBC7273225FA17500B58065 /* EarthquakeApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7272225FA17500B58065 /* EarthquakeApiHandler.swift */; };
 		2FBC7275225FA2AA00B58065 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7274225FA2AA00B58065 /* Earthquake.swift */; };
 		2FBC7277226037E300B58065 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBC7276226037E300B58065 /* FriendsTableViewCell.swift */; };
+		2FE965232263E79600235B03 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE965222263E79600235B03 /* SplashViewController.swift */; };
+		2FE965252263EAE400235B03 /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FE965242263EAE400235B03 /* SplashView.xib */; };
+		2FE965272263EB5200235B03 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE965262263EB5200235B03 /* SplashView.swift */; };
 		FD11DA03930E6AFF50C452AE /* Pods_EWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,9 @@
 		2FBC7272225FA17500B58065 /* EarthquakeApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeApiHandler.swift; sourceTree = "<group>"; };
 		2FBC7274225FA2AA00B58065 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		2FBC7276226037E300B58065 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		2FE965222263E79600235B03 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		2FE965242263EAE400235B03 /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
+		2FE965262263EB5200235B03 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		791C1AA959C5F6F04A3F33A6 /* Pods_EWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEE6D6F5353A869FB9BAF2C /* Pods-EWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.debug.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.debug.xcconfig"; sourceTree = "<group>"; };
 		F6AD22029D09A8082DF27A39 /* Pods-EWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.release.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				2FBC7256225D953A00B58065 /* ProfileViewController.swift */,
 				2FBC7267225E98B400B58065 /* LocationViewController.swift */,
 				2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */,
+				2FE965222263E79600235B03 /* SplashViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -240,6 +247,8 @@
 			children = (
 				2F75037D225BF98F0045570B /* Main.storyboard */,
 				2F750382225BF9900045570B /* LaunchScreen.storyboard */,
+				2FE965242263EAE400235B03 /* SplashView.xib */,
+				2FE965262263EB5200235B03 /* SplashView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F750384225BF9900045570B /* LaunchScreen.storyboard in Resources */,
+				2FE965252263EAE400235B03 /* SplashView.xib in Resources */,
 				2F07495B225C3E7A00215677 /* GoogleService-Info.plist in Resources */,
 				2F750381225BF9900045570B /* Assets.xcassets in Resources */,
 				2F75037F225BF98F0045570B /* Main.storyboard in Resources */,
@@ -355,7 +365,11 @@
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/TAPageControl/TAPageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
+				"${BUILT_PRODUCTS_DIR}/VGContent/VGContent.framework",
+				"${BUILT_PRODUCTS_DIR}/VGInfiniteControl/VGInfiniteControl.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -366,7 +380,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TAPageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VGContent.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VGInfiniteControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -434,6 +452,7 @@
 				2F07495E225C435E00215677 /* LoginViewController.swift in Sources */,
 				2F60F4672261166E00EE4D28 /* AddPostViewController.swift in Sources */,
 				2F60F46B2261AD2100EE4D28 /* IconSizeExtension.swift in Sources */,
+				2FE965232263E79600235B03 /* SplashViewController.swift in Sources */,
 				2F60F46922619A3D00EE4D28 /* FriendsMapViewController.swift in Sources */,
 				2F60F465226105BB00EE4D28 /* FeedCollectionViewCell.swift in Sources */,
 				2FBC725F225E5F9200B58065 /* UserModel.swift in Sources */,
@@ -442,6 +461,7 @@
 				2FBC7271225F87DB00B58065 /* BaseViewController.swift in Sources */,
 				2F074964225C5F0F00215677 /* ResetPasswordViewController.swift in Sources */,
 				2FBC7253225D787100B58065 /* Weather.swift in Sources */,
+				2FE965272263EB5200235B03 /* SplashView.swift in Sources */,
 				2FBC725D225E513B00B58065 /* WeatherCollectionViewCell.swift in Sources */,
 				2F60F4632260F87100EE4D28 /* PostData.swift in Sources */,
 				2F074968225D11FB00215677 /* MainTabBarViewController.swift in Sources */,

@@ -26,5 +26,8 @@ target 'EWS' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'TWMessageBarManager'
+  
+  pod 'TAPageControl'
+  pod 'VGContent', :git => 'https://github.com/mojidabckuu/VGContent.git', :branch => 'UIControls'
 
 end

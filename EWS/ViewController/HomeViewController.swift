@@ -43,11 +43,15 @@ class HomeViewController: BaseViewController {
     func getCurrentUser(){
         FirebaseApiHandler.sharedInstance.getCurrentUserInfo { (userModel) in
             self.curUser = userModel
-            self.userEmailLbl.text = self.curUser?.email
+            DispatchQueue.main.async {
+                self.userEmailLbl.text = self.curUser?.email
+            }
             FirebaseApiHandler.sharedInstance.getUserImg(id: self.curUser!.uid, completionHandler: { (data, error) in
                 if data != nil{
-                    self.profileImgView.image = UIImage(data : data!)
-                    self.profileImgView.roundedImage()
+                    DispatchQueue.main.async {
+                        self.profileImgView.image = UIImage(data : data!)
+                        self.profileImgView.roundedImage()
+                    }
                 }else{
                     print(error)
                 }
