@@ -32,9 +32,13 @@ class RegistrationViewController: FormViewController {
             
             <<< NameRow("firstNameRow") {
                 $0.placeholder = "First Name"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnChange
                 }
+                .cellUpdate({ (cell, row) in
+                    cell.textField.textColor = UIColor.white
+                })
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "user")
                     cell.backgroundColor = .clear
@@ -64,9 +68,13 @@ class RegistrationViewController: FormViewController {
             }
             <<< NameRow("lastNameRow") {
                 $0.placeholder = "Last Name"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnChange
                 }
+                .cellUpdate({ (cell, row) in
+                    cell.textField.textColor = UIColor.white
+                })
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "user")
                     cell.backgroundColor = .clear
@@ -96,9 +104,13 @@ class RegistrationViewController: FormViewController {
             }
             <<< EmailRow("emailRow") {
                 $0.placeholder = "Email"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnChange
                 }
+                .cellUpdate({ (cell, row) in
+                    cell.textField.textColor = UIColor.white
+                })
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "email")
                     cell.backgroundColor = .clear
@@ -128,11 +140,15 @@ class RegistrationViewController: FormViewController {
             }
             <<< PasswordRow("passwordRow") {
                 $0.placeholder = "Password"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.add(rule: RuleMinLength(minLength: 8))
                 $0.add(rule: RuleMaxLength(maxLength: 13))
                 $0.validationOptions = .validatesOnChange
                 }
+                .cellUpdate({ (cell, row) in
+                    cell.textField.textColor = UIColor.white
+                })
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "password")
                     cell.backgroundColor = .clear
@@ -162,8 +178,12 @@ class RegistrationViewController: FormViewController {
             }
             <<< PasswordRow("confirmpwRow") {
                 $0.placeholder = "Confirm Password"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleEqualsToRow(form: form, tag: "passwordRow"))
                 }
+                .cellUpdate({ (cell, row) in
+                    cell.textField.textColor = UIColor.white
+                })
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "password")
                     cell.backgroundColor = .clear
@@ -198,6 +218,7 @@ class RegistrationViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
+                    row.cell.tintColor = UIColor.white
             }
     }
 

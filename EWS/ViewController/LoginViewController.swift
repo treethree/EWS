@@ -19,19 +19,15 @@ class LoginViewController: FormViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         
-        //createLoginForm()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
         createLoginForm()
     }
-    
     
     func createLoginForm(){
         form +++ Section()
             //email account
             <<< AccountRow("accountRow") {
                 $0.placeholder = "User Name(Email)"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.add(rule: RuleEmail())
                 $0.validationOptions = .validatesOnChangeAfterBlurred
@@ -40,6 +36,7 @@ class LoginViewController: FormViewController {
                     if !row.isValid {
                         cell.titleLabel?.backgroundColor = UIColor.red
                     }
+                    cell.textField.textColor = UIColor.white
                 }
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
@@ -47,9 +44,7 @@ class LoginViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
-                    //cell.height = { 55 }
 
-                    
                     cell.imageView?.image = UIImage(named: "email")
                 }
                 .onRowValidationChanged { cell, row in
@@ -73,6 +68,7 @@ class LoginViewController: FormViewController {
             }
             <<< PasswordRow("passwordRow") {
                 $0.placeholder = "Password"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.add(rule: RuleMinLength(minLength: 8))
                 $0.add(rule: RuleMaxLength(maxLength: 13))
@@ -81,6 +77,7 @@ class LoginViewController: FormViewController {
                     if !row.isValid {
                         cell.titleLabel?.textColor = .red
                     }
+                    cell.textField.textColor = UIColor.white
                 }
                 .onRowValidationChanged { cell, row in
                     let rowIndex = row.indexPath!.row
@@ -125,6 +122,7 @@ class LoginViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
+                    row.cell.tintColor = UIColor.white
             }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
@@ -136,7 +134,6 @@ class LoginViewController: FormViewController {
                 }.onCellSelection({ (cell, row) in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController")
                     self.navigationController?.pushViewController(vc!, animated: true)
-                    //self.present(vc!, animated: true, completion: nil)
                 })
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
@@ -144,6 +141,7 @@ class LoginViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
+                    row.cell.tintColor = UIColor.white
             }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
@@ -154,7 +152,7 @@ class LoginViewController: FormViewController {
                 }.onCellSelection({ (cell, row) in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ResetPasswordViewController")
                     self.navigationController?.pushViewController(vc!, animated: true)
-                    //self.present(vc!, animated: true, completion: nil)
+
                 })
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
@@ -162,6 +160,7 @@ class LoginViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
+                    row.cell.tintColor = UIColor.white
         }
     }
 

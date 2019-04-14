@@ -21,7 +21,7 @@ class HomeViewController: BaseViewController {
     {
         didSet{
             DispatchQueue.main.async {
-//                FirebaseApiHandler.sharedInstance.getUserImg(id: <#T##String#>, completionHandler: <#T##(Data?, Error?) -> Void#>)
+
                 self.tblView.reloadData()
                 self.colView.reloadData()
             }
@@ -36,7 +36,6 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //print(lat,lot)
         callWeatherAPI(lat: lat, lot: lot)
         getCurrentUser()
     }
@@ -101,8 +100,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
             cell?.timeLbl.text = myMilliseconds.toHour
             cell?.iconImgView.image = UIImage(named: tempObj.icon)
             cell?.iconImgView.roundedImage()
-            cell!.layer.borderWidth = 1.0
-            cell!.layer.borderColor = UIColor.white.cgColor
+            cell?.layer.cornerRadius = 10.0
             
         }
         return cell!
@@ -127,8 +125,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell?.dateLbl.text = myMilliseconds.toDay
             cell?.imgView.image = UIImage(named: tempObj.icon)
             //cell?.backgroundColor = UIColor(red: 0/255, green: 63/255, blue: 153/255, alpha: 1.0)
-            cell!.layer.borderWidth = 1.0
-            cell!.layer.borderColor = UIColor.white.cgColor
+            cell?.layer.cornerRadius = 10.0
         }
         return cell!
     }

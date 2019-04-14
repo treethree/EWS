@@ -26,6 +26,7 @@ class ResetPasswordViewController: FormViewController {
         form +++ Section()
             <<< EmailRow("emailRow") {
                 $0.placeholder = "Email"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.add(rule: RuleEmail())
                 $0.validationOptions = .validatesOnChangeAfterBlurred
@@ -42,6 +43,7 @@ class ResetPasswordViewController: FormViewController {
                     if !row.isValid {
                         cell.titleLabel?.backgroundColor = UIColor.red
                     }
+                    cell.textField.textColor = UIColor.white
                 }
                 .onRowValidationChanged { cell, row in
                     let rowIndex = row.indexPath!.row
@@ -76,6 +78,7 @@ class ResetPasswordViewController: FormViewController {
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
+                    row.cell.tintColor = UIColor.white
         }
     }
 
