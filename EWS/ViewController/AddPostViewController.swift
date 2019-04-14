@@ -47,3 +47,9 @@ extension AddPostViewController : UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
 }
+
+extension AddPostViewController : UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
+}

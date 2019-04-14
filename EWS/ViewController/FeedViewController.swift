@@ -48,6 +48,7 @@ extension FeedViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = colView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath) as? FeedCollectionViewCell
+        cell?.layer.cornerRadius = 10.0
         FirebaseApiHandler.sharedInstance.getPosts { (postArr) in
             if postArr != nil{
                 self.pArray = postArr!

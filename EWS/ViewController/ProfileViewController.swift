@@ -27,12 +27,6 @@ class ProfileViewController:  FormViewController{
 
         getCurrentUserInfo()
     }
-//    func getCurrentUserInfo(){
-//        FirebaseApiHandler.sharedInstance.getCurrentUserInfo { (curUser) in
-//            self.userModel = curUser!
-//            //self.currentUser = curUser
-//        }
-//    }
     
     func getCurrentUserInfo(){
             if let user = Auth.auth().currentUser{
@@ -56,15 +50,18 @@ class ProfileViewController:  FormViewController{
                 }
             }
         
-        //dismiss(animated: true, completion: nil)
     }
     
     func createProfileForm(){
         form +++ Section()
             <<< NameRow("firstNameRow") {
                 $0.placeholder = "First Name"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnChange
+                }
+                .cellUpdate { cell, row in
+                    cell.textField.textColor = UIColor.white
                 }
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "user")
@@ -90,10 +87,18 @@ class ProfileViewController:  FormViewController{
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< NameRow("lastNameRow") {
                 $0.placeholder = "Last Name"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnChange
+                }
+                .cellUpdate { cell, row in
+                    cell.textField.textColor = UIColor.white
                 }
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "user")
@@ -119,10 +124,18 @@ class ProfileViewController:  FormViewController{
                         }
                     }
             }
+            <<< SpaceCellRow(){
+                $0.cell.spaceHeight = 10
+                $0.cell.backgroundColor = .clear
+            }
             <<< EmailRow("emailRow") {
                 $0.placeholder = "Email"
+                $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnChange
+                }
+                .cellUpdate { cell, row in
+                    cell.textField.textColor = UIColor.white
                 }
                 .cellSetup { cell, row in
                     cell.imageView?.image = UIImage(named: "email")
@@ -185,22 +198,12 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
             storageRef.putData(imgData!, metadata: metaData)
         }
     }
-    //get image from firebase storage
-//    func getUserImage(){
-//        if let user = Auth.auth().currentUser{
-//            let imagename = "UserImage/\(String(user.uid)).jpeg"
-//            var storageRef = Storage.storage().reference()
-//            storageRef = storageRef.child(imagename)
-//            storageRef.getData(maxSize: 1*300*300) { (data, error) in
-//                let img = UIImage(data: data!)
-//                self.profileImgView.image = img
-//            }
-//        }
-//    }
+
     func getUserImage(){
         FirebaseApiHandler.sharedInstance.getUserImg(id: currentUser["uid"] as! String) { (data, error) in
             if data != nil{
                 self.profileImgView.image = UIImage(data : data!)
+                self.profileImgView.roundedImage()
             }else{
                 print(error)
             }

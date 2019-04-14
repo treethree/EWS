@@ -28,6 +28,8 @@ class LocationViewController: UIViewController {
         searchController?.searchBar.sizeToFit()
         navigationItem.titleView = searchController?.searchBar
         
+        searchController?.searchBar.backgroundColor = UIColor.black
+        
         // When UISearchController presents the results view, present it in
         // this view controller, not one further up the chain.
         definesPresentationContext = true

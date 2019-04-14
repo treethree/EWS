@@ -73,6 +73,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblView.dequeueReusableCell(withIdentifier: "friendsCell") as? FriendsTableViewCell
+        cell?.layer.cornerRadius = 10.0
         let userObj = users[indexPath.row]
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lnameLbl.text = "Last Name: \(userObj.lname)"

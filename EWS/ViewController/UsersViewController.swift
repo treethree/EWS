@@ -24,7 +24,6 @@ class UsersViewController: UIViewController {
         
         getAllUsers()
         tblView.reloadData()
-        //getUserImage()
         
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
@@ -45,15 +44,6 @@ class UsersViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tblView.reloadData()
             }
-//            for user in self.users{
-//                FirebaseApiHandler.sharedInstance.getUserImg(id: user.uid, completionHandler: { (data, error) in
-//                    if data != nil{
-//                        self.profileImgView.image = UIImage(data : data!)
-//                    }else{
-//                        print(error)
-//                    }
-//                })
-//            }
         }
     }
     
@@ -73,12 +63,14 @@ class UsersViewController: UIViewController {
 }
 
 extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblView.dequeueReusableCell(withIdentifier: "usersCell") as? UsersTableViewCell
+        cell?.layer.cornerRadius = 10.0
         let userObj = users[indexPath.row]
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lNameLbl.text = "Last Name: \(userObj.lname)"
@@ -90,8 +82,8 @@ extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
                 print(error)
             }
         }
-        //cell?.imgView.image = getUserImage(uid: uidObj)
         cell?.addFriendLbl.tag = indexPath.row
+        
         return cell!
     }
     
