@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AddPostViewController: UIViewController {
 
@@ -20,8 +21,14 @@ class AddPostViewController: UIViewController {
     
     @IBAction func postBtnClick(_ sender: UIButton) {
         if imgView.image != nil {
+            SVProgressHUD.show()
             FirebaseApiHandler.sharedInstance.addPost(img: imgView.image!, postdesc: txtView.text) { (error) in
-                print(error)
+                if error == nil{
+                    SVProgressHUD.dismiss()
+                }else{
+                    print(error)
+                    SVProgressHUD.dismiss()
+                }
             }
         }
     }

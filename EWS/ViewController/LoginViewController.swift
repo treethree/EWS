@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import SVProgressHUD
 
 class LoginViewController: FormViewController {
 
@@ -110,8 +111,12 @@ class LoginViewController: FormViewController {
                 $0.title = "Submit"
                 }.onCellSelection({ (cell, row) in
                     let formVal = self.form.values()
+                    SVProgressHUD.show()
                     FirebaseApiHandler.sharedInstance.signInUserAccount(email: formVal["accountRow"] as! String, password: formVal["passwordRow"] as! String, completionHandler: { (error) in
                         print("Login error!")
+                        DispatchQueue.main.async {
+                            SVProgressHUD.dismiss()
+                        }
                     })
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                     self.present(vc!, animated: true, completion: nil)

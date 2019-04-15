@@ -11,6 +11,7 @@ import Eureka
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import SVProgressHUD
 
 class ProfileViewController:  FormViewController{
     var ref: DatabaseReference!
@@ -25,6 +26,7 @@ class ProfileViewController:  FormViewController{
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
 
+        navigationController?.isNavigationBarHidden = true
         getCurrentUserInfo()
     }
     
@@ -200,12 +202,15 @@ extension ProfileViewController : UIImagePickerControllerDelegate, UINavigationC
     }
 
     func getUserImage(){
+        SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.getUserImg(id: currentUser["uid"] as! String) { (data, error) in
             if data != nil{
                 self.profileImgView.image = UIImage(data : data!)
                 self.profileImgView.roundedImage()
+                SVProgressHUD.dismiss()
             }else{
                 print(error)
+                SVProgressHUD.dismiss()
             }
         }
     }

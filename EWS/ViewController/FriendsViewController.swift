@@ -8,6 +8,7 @@
 
 import UIKit
 import TWMessageBarManager
+import SVProgressHUD
 
 class FriendsViewController: UIViewController {
 
@@ -28,12 +29,17 @@ class FriendsViewController: UIViewController {
     }
     
     func getFriend(){
+        SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.getFriends { (friendArr) in
             if friendArr != nil{
                 self.users = friendArr!
                 DispatchQueue.main.async {
                     self.tblView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
+            }else{
+                print("error")
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -45,13 +51,20 @@ class FriendsViewController: UIViewController {
     }
     
     @IBAction func deleteFriendBtnClick(_ sender: UIButton) {
+        SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.removeFriend(friendId: users[sender.tag].uid) { (error) in
-            print(error)
-            self.users.remove(at: sender.tag)
-            DispatchQueue.main.async {
-                self.tblView.reloadData()
+            if error == nil{
+                self.users.remove(at: sender.tag)
+                DispatchQueue.main.async {
+                    self.tblView.reloadData()
+                    SVProgressHUD.dismiss()
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Delete friend", description: "You successfully delete a friend!", type: .success)
+                }
+            }else{
+                print(error)
+                SVProgressHUD.dismiss()
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error deleting friend", description: "Error happen when delete a friend!", type: .error)
             }
-            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Delete friend", description: "You successfully delete a friend!", type: .success)
         }
     }
     
@@ -78,12 +91,15 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource{
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lnameLbl.text = "Last Name: \(userObj.lname)"
         cell?.deleteBtnOutlet.tag = indexPath.row
+        SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.getUserImg(id: users[indexPath.row].uid) { (data, error) in
             if data != nil{
                 cell?.imgView.image = UIImage(data : data!)
                 cell?.imgView.roundedImage()
+                SVProgressHUD.dismiss()
             }else{
                 print(error)
+                SVProgressHUD.dismiss()
             }
         }
         return cell!

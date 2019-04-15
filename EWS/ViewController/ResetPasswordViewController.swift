@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import SVProgressHUD
 
 class ResetPasswordViewController: FormViewController {
 
@@ -67,8 +68,18 @@ class ResetPasswordViewController: FormViewController {
             <<< ButtonRow() {
                 $0.title = "Reset"
                 }.onCellSelection({ (cell, row) in
+                    SVProgressHUD.show()
                     FirebaseApiHandler.sharedInstance.resetPasswordUserAccount(email: self.form.values()["emailRow"] as! String, completionHandler: { (error) in
-                        print("Error in reset password")
+                        if error == nil{
+                            DispatchQueue.main.async {
+                                SVProgressHUD.dismiss()
+                            }
+                        }else{
+                            print(error)
+                            DispatchQueue.main.async {
+                                SVProgressHUD.dismiss()
+                            }
+                        }
                     })
                     self.navigationController?.popViewController(animated: true)
                 })

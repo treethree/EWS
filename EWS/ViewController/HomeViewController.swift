@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
 
 class HomeViewController: BaseViewController {
     @IBOutlet weak var tblView: UITableView!
@@ -21,7 +22,6 @@ class HomeViewController: BaseViewController {
     {
         didSet{
             DispatchQueue.main.async {
-
                 self.tblView.reloadData()
                 self.colView.reloadData()
             }
@@ -33,46 +33,63 @@ class HomeViewController: BaseViewController {
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
+        DispatchQueue.main.async {
+            self.getCurrentUser()
+            self.tblView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         callWeatherAPI(lat: lat, lot: lot)
-        getCurrentUser()
+        DispatchQueue.main.async {
+            self.getCurrentUser()
+            self.tblView.reloadData()
+        }
     }
     
     func getCurrentUser(){
         FirebaseApiHandler.sharedInstance.getCurrentUserInfo { (userModel) in
             self.curUser = userModel
-            DispatchQueue.main.async {
+            //DispatchQueue.main.async {
                 self.userEmailLbl.text = self.curUser?.email
-            }
+            //}
+            SVProgressHUD.show()
             FirebaseApiHandler.sharedInstance.getUserImg(id: self.curUser!.uid, completionHandler: { (data, error) in
                 if data != nil{
                     DispatchQueue.main.async {
                         self.profileImgView.image = UIImage(data : data!)
                         self.profileImgView.roundedImage()
+                        SVProgressHUD.dismiss()
                     }
                 }else{
                     print(error)
+                   // DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                   // }
                 }
             })
         }
     }
 
     func callWeatherAPI(lat: Double, lot: Double)  {
+        SVProgressHUD.show()
         WeatherApiHandler.sharedInstance.getApiForWeather(lat: lat, lot: lot) { (Weather, error) in
             if Weather != nil{
                 self.curWeather = Weather!
-                //print(lat,lot)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
             }else{
                 print("error found!")
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
             }
         }
     }
     @IBAction func locationBtnClick(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "LocationViewController")
         navigationController?.pushViewController(vc!, animated: true)
-        //present(vc!, animated: true, completion: nil)
     }
     
     @IBAction func earthquakeBtnClick(_ sender: UIButton) {
@@ -128,7 +145,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell?.timezoneLbl.text = curWeather?.timezone
             cell?.dateLbl.text = myMilliseconds.toDay
             cell?.imgView.image = UIImage(named: tempObj.icon)
-            //cell?.backgroundColor = UIColor(red: 0/255, green: 63/255, blue: 153/255, alpha: 1.0)
             cell?.layer.cornerRadius = 10.0
         }
         return cell!

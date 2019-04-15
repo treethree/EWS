@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
 
 class RegistrationViewController: FormViewController {
     var userInfo : UserModel?
@@ -225,7 +226,7 @@ class RegistrationViewController: FormViewController {
     @IBAction func SignUpBtnClick(_ sender: UIButton) {
         self.view.endEditing(true)
         let formVal = form.values()
-        
+        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: formVal["emailRow"] as! String, password: formVal["passwordRow"] as! String) { (result, error) in
             if error == nil{
                 if let user = result?.user{
@@ -241,6 +242,14 @@ class RegistrationViewController: FormViewController {
                                 "password" : formVal["passwordRow"],
                                 "uid" : user.uid ]
                     self.ref.child("User").child(user.uid).setValue(dict)
+                }
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+            }else{
+                print(error)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
                 }
             }
             

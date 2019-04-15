@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import TWMessageBarManager
+import SVProgressHUD
 
 class UsersViewController: UIViewController {
     var ref: DatabaseReference!
@@ -32,17 +33,24 @@ class UsersViewController: UIViewController {
 
     @IBAction func addFriendBtnClick(_ sender: UIButton) {
         FirebaseApiHandler.sharedInstance.addFriend(friendId: users[sender.tag].uid) { (error) in
-            print(error)
+            if error == nil{
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Add friend", description: "You successfully add a new friend!", type: .success)
+            }else{
+                print(error)
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error Add friend", description: "Error happen when add a new friend!", type: .error)
+            }
         }
-        TWMessageBarManager.sharedInstance().showMessage(withTitle: "Add friend", description: "You successfully add a new friend!", type: .success)
+        
         
     }
     
     func getAllUsers(){
+        SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.getUsers { (usermodel) in
             self.users = usermodel!
             DispatchQueue.main.async {
                 self.tblView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -74,12 +82,15 @@ extension UsersViewController : UITableViewDelegate, UITableViewDataSource{
         let userObj = users[indexPath.row]
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lNameLbl.text = "Last Name: \(userObj.lname)"
+        SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.getUserImg(id: users[indexPath.row].uid) { (data, error) in
             if data != nil{
                 cell?.imgView.image = UIImage(data : data!)
                 cell?.imgView.roundedImage()
+                SVProgressHUD.dismiss()
             }else{
                 print(error)
+                SVProgressHUD.dismiss()
             }
         }
         cell?.addFriendLbl.tag = indexPath.row

@@ -29,5 +29,6 @@ target 'EWS' do
   
   pod 'TAPageControl'
   pod 'VGContent', :git => 'https://github.com/mojidabckuu/VGContent.git', :branch => 'UIControls'
+  pod 'SVProgressHUD', '~> 2.2'
 
 end

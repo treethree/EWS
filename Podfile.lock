@@ -89,6 +89,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SVProgressHUD (2.2.5)
   - TAPageControl (0.2.0)
   - TWMessageBarManager (1.8.1)
   - VGContent (0.1.0):
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - SVProgressHUD (~> 2.2)
   - TAPageControl
   - TWMessageBarManager
   - VGContent (from `https://github.com/mojidabckuu/VGContent.git`, branch `UIControls`)
@@ -133,6 +135,7 @@ SPEC REPOS:
     - iCarousel
     - leveldb-library
     - nanopb
+    - SVProgressHUD
     - TAPageControl
     - TWMessageBarManager
     - VGInfiniteControl
@@ -168,11 +171,12 @@ SPEC CHECKSUMS:
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TAPageControl: fd11d779bbb5c2464ca2f55dde9e288213ea8a9b
   TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
   VGContent: ffdf303df508ae195da98e9a7878d60b9166aa7d
   VGInfiniteControl: ebe8f4903e4cb9eea9c8fef01e9d2a01cec02e66
 
-PODFILE CHECKSUM: dd47cec8a469de7e9ff57e3f43faf99be8bf0e87
+PODFILE CHECKSUM: c5f7abba15570943ea1e7ab0cc72c932e98ccf3b
 
 COCOAPODS: 1.6.1
