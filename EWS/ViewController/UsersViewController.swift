@@ -25,10 +25,13 @@ class UsersViewController: UIViewController {
         
         getAllUsers()
         tblView.reloadData()
-        
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     @IBAction func addFriendBtnClick(_ sender: UIButton) {

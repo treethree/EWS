@@ -29,6 +29,9 @@ class ProfileViewController:  FormViewController{
         navigationController?.isNavigationBarHidden = true
         getCurrentUserInfo()
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     func getCurrentUserInfo(){
             if let user = Auth.auth().currentUser{

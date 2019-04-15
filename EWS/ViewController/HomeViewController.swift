@@ -33,6 +33,7 @@ class HomeViewController: BaseViewController {
         tblView.backgroundColor = .clear
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
+        navigationController?.navigationBar.barStyle = .black
         DispatchQueue.main.async {
             self.getCurrentUser()
             self.tblView.reloadData()

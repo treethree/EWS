@@ -27,7 +27,9 @@ class FriendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tblView.reloadData()
     }
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     func getFriend(){
         SVProgressHUD.show()
         FirebaseApiHandler.sharedInstance.getFriends { (friendArr) in

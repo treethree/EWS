@@ -9,12 +9,11 @@
 import UIKit
 import FirebaseAuth
 
-class SettingViewController: BaseViewController {
+class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Settings"
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isHidden = true
     }
     func signOutUserAccount(){
         do {
@@ -22,7 +21,10 @@ class SettingViewController: BaseViewController {
         } catch {
             print(error)
         }
-        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     @IBAction func logoutBtnClick(_ sender: UIButton) {
