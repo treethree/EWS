@@ -46,16 +46,15 @@ class SplashViewController: BaseViewController,VGCarouselContentDelegate {
         self.pageControl.currentPage = carouselView.currentItemIndex
         self.playSelectedVideo()
     }
+
     func playSelectedVideo() {
         if let object = self.content.selectedItem as? String {
-            if object.isEmpty{
-                                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                                let nav =  mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                                UIApplication.shared.keyWindow?.rootViewController = nav
+            if object == "Splash5"{
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let nav =  mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                navigationController?.pushViewController(nav, animated: true)
+                                //UIApplication.shared.keyWindow?.rootViewController = nav
             }
-            
-            
-            
         }
     }
     

@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EWS/ViewController/FeedViewController.swift"
-            timestampString = "576991181.876386"
+            filePath = "EWS/ViewController/SplashViewController.swift"
+            timestampString = "577035893.37634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "playSelectedVideo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,62 +25,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EWS/APIHandlers/FirebaseApiHandler.swift"
-            timestampString = "576951941.9755321"
+            filePath = "EWS/ViewController/SplashViewController.swift"
+            timestampString = "577035893.376634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "getUserByID(userID:completionHandler:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "content(_:didChangeCurrentItem:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in EWS.FirebaseApiHandler.getUserByID(userID: Swift.String, completionHandler: (Swift.Optional&lt;EWS.UserModel&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "EWS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shileicui/Documents/Xcode_project_structured/Firebase/EWS/EWS/APIHandlers/FirebaseApiHandler.swift"
-                  timestampString = "576904671.695202"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "762">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in EWS.FirebaseApiHandler.getUserByID(userID: Swift.String, completionHandler: (Swift.Optional&lt;EWS.UserModel&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "EWS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shileicui/Documents/Xcode_project_structured/Firebase/EWS/EWS/APIHandlers/FirebaseApiHandler.swift"
-                  timestampString = "576904671.6992821"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "45">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EWS/View/SplashView.swift"
-            timestampString = "576991181.877045"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "SplashView"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

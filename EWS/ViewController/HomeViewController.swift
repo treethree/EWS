@@ -34,16 +34,16 @@ class HomeViewController: BaseViewController {
         tblView.showsVerticalScrollIndicator = false
         tblView.bounces = false
         navigationController?.navigationBar.barStyle = .black
-        DispatchQueue.main.async {
-            self.getCurrentUser()
-            self.tblView.reloadData()
-        }
+//        self.getCurrentUser()
+//        DispatchQueue.main.async {
+//            self.tblView.reloadData()
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         callWeatherAPI(lat: lat, lot: lot)
+        self.getCurrentUser()
         DispatchQueue.main.async {
-            self.getCurrentUser()
             self.tblView.reloadData()
         }
     }

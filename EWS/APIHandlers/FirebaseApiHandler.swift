@@ -19,43 +19,21 @@ class FirebaseApiHandler: NSObject {
     func getPosts(completionHandler: @escaping ([[String:Any]]?)->Void) {
         
         var postArr = [[String:Any]]()
-        //let postListdispatchGroup = DispatchGroup()
-        //let fetchUserComponentsGroup = DispatchGroup()
         self.ref.child("Post").observeSingleEvent(of: .value) {
             (snapshot) in
             if let posts = snapshot.value as? [String:Any] {
                 for record in posts {
-                    //postListdispatchGroup.enter()
                     let key = record.key
                     let post = posts[key] as! [String:Any]
                     var postDict = [String:Any]()
-                    //fetchUserComponentsGroup.enter()
-//                    self.getUserByID(userID: post["userID"] as! String, completionHandler: { (user) in
-//                        postDict["user"] = user
-//                        //fetchUserComponentsGroup.leave()
-//                    })
                     postDict["userID"] = post["userID"]
                     postDict["postID"] = key
                     postDict["comment"] = post["describtion"]
                     postDict["timestamp"] = post["timestamp"]
                     postArr.append(postDict)
-                    //self.getPostImg(id: key, completionHandler: { (data, error) in
-                        //if error == nil && data != nil {
-                           // postDict["postImg"] = UIImage(data: data!)
-//                        } else {
-//                            postDict["postImg"] = nil
-//                        }
-//                        fetchUserComponentsGroup.notify(queue: .main) {
-//                            postArr.append(postDict)
-//                            postListdispatchGroup.leave()
-//                        }
-                    //})
                 }
                 completionHandler(postArr)
                 
-//                postListdispatchGroup.notify(queue: .main) {
-//                    completionHandler(postArr)
-//                }
             }else {
                 completionHandler(nil)
             }
@@ -71,24 +49,8 @@ class FirebaseApiHandler: NSObject {
                     return
             }
             var use = UserModel(userID, info: snap)
-//            self.getUserImg(id: use.uid, completionHandler: { (data, error) in
-//                if data != nil{
-//                    use.image = UIImage(data: data!)
-//                }else{
-//                    print(error)
-//                }
-//            })
             completionHandler(use)
-//            self.getUserImg(id: userID, completionHandler: { (data, error) in
-//                if data != nil{
-//                    let use = UserModel(userID, info: snap)
-//                }
-//            })
-            
-//            self.getUserImg(id: userID, completionHandler: { (data, error) in
-//                let use = UserModel(userID: userID, fname: snap["FirstName"] as! String, lname: snap["Lastname"] as! String, email: snap["Email"] as! String, address: snap["Address"] as! String , phone: snap["Phone"] as! String, password: nil, image: UIImage(data: data ?? Data()), latitude: (37.2131 as! Double), longitude: (-121.3232 as! Double))
-//                completionHandler(use)
-//            })
+
         })
     }
     

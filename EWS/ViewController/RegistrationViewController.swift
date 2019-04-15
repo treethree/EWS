@@ -24,7 +24,7 @@ class RegistrationViewController: FormViewController {
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
-        
+        //navigationController?.navigationBar.backgroundColor = .clear
         createRegistrationForm()
     }
     

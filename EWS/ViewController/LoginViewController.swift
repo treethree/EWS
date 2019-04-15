@@ -119,7 +119,7 @@ class LoginViewController: FormViewController {
                         }
                     })
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
-                    self.present(vc!, animated: true, completion: nil)
+                    self.present(vc!, animated: true, completion: nil)        
                 })
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
