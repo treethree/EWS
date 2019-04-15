@@ -21,6 +21,9 @@ class ResetPasswordViewController: FormViewController {
 
         createResetPasswordForm()
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
 
     func createResetPasswordForm(){
