@@ -13,6 +13,7 @@ import SVProgressHUD
 class FriendsViewController: UIViewController {
 
     var users = [UserModel]()
+    var singleFriend : UserModel?
 
     @IBOutlet weak var tblView: UITableView!
     override func viewDidLoad() {
@@ -45,6 +46,13 @@ class FriendsViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func chatBtnClick(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController
+        vc?.singleFriendInfo = singleFriend
+        present(vc!, animated: true, completion: nil)
+    }
+    
     
     @IBAction func mapBtnClick(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "FriendsMapViewController")
@@ -90,6 +98,11 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource{
         let cell = tblView.dequeueReusableCell(withIdentifier: "friendsCell") as? FriendsTableViewCell
         cell?.layer.cornerRadius = 10.0
         let userObj = users[indexPath.row]
+        //bug here for multi friends
+        singleFriend = users[indexPath.row]
+        
+        //chatBtnOutlet.tag = indexPath.row
+        
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lnameLbl.text = "Last Name: \(userObj.lname)"
         cell?.deleteBtnOutlet.tag = indexPath.row

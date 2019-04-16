@@ -10,10 +10,12 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var chatBtnOutlet: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var fnameLbl: UILabel!
     @IBOutlet weak var lnameLbl: UILabel!
     @IBOutlet weak var deleteBtnOutlet: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -27,6 +27,39 @@ class FirebaseApiHandler: NSObject {
             completionHandler(false)
         }
     }
+    func chatKey(uid : String, friendID: String)->String{
+        return uid < friendID ? "\(uid)\(friendID)" : "\(friendID)\(uid)"
+    }
+    
+    func sendText(friendID : String, msg: String, completionHandler: @escaping (Error?)->Void){
+        let time = Date().timeIntervalSince1970
+        let uid = (Auth.auth().currentUser?.uid)!
+        let key = chatKey(uid: uid, friendID: friendID)
+        let msgKey = "\(Int(time))"
+        let info = [
+            "receiverID": friendID,
+            "message": msg,
+            "time": String(time)
+        ]
+        
+        ref.child("Conversations").child(key).child(msgKey).setValue(info) { error, ref in
+            if let error = error {
+                print(error.localizedDescription)
+            } else { print(error) }
+        }
+    }
+    
+    func getConversation(friendID: String, completion: @escaping ([ChatInfo]?) -> Void) {
+        let uid = (Auth.auth().currentUser?.uid)!
+        let key = chatKey(uid: uid, friendID: friendID)
+        ref.child("Conversations").child(key).observeSingleEvent(of: .value) { (snapshot) in
+            if let msgList = snapshot.value as? [String : Any] {
+                let chatList = msgList.map({ ChatInfo(info: $1 as! [String : Any]) })
+                completion(chatList)
+            } else { completion(nil) }
+        }
+    }
+    
     
     func getPosts(completionHandler: @escaping ([[String:Any]]?)->Void) {
         
