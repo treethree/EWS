@@ -1,8 +1,20 @@
 PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Eureka (5.0.0)
   - Fabric (1.9.0)
+  - FBSDKCoreKit (4.44.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.44.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.43.0):
+    - FBSDKCoreKit
   - Firebase/Auth (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.4.2)
@@ -63,6 +75,18 @@ PODS:
     - GooglePlaces (= 3.0.3)
   - GooglePlaces (3.0.3):
     - GoogleMaps/Base (= 3.0.3)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
   - GoogleUtilities/AppDelegateSwizzler (5.5.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -101,6 +125,9 @@ DEPENDENCIES:
   - Crashlytics (~> 3.12.0)
   - Eureka
   - Fabric (~> 1.9.0)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -108,6 +135,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - GoogleSignIn
   - SVProgressHUD (~> 2.2)
   - TAPageControl
   - TWMessageBarManager
@@ -115,9 +143,13 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Bolts
     - Crashlytics
     - Eureka
     - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -130,6 +162,8 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
+    - GoogleSignIn
+    - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
     - iCarousel
@@ -151,9 +185,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/mojidabckuu/VGContent.git
 
 SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FBSDKCoreKit: 8bcd4503afe43f28823c2175a6142a7f50f1bf28
+  FBSDKLoginKit: 93c5a407ab1a6a17b1b38cff57e89991f714d878
+  FBSDKShareKit: 5216050ba1406c3ad5fafdc07ee87afa6a8d2942
   Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
@@ -166,6 +204,8 @@ SPEC CHECKSUMS:
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
   GooglePlacePicker: 0c90898945f02ef36cce86fc9a107e1c5d3d26b1
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
@@ -177,6 +217,6 @@ SPEC CHECKSUMS:
   VGContent: ffdf303df508ae195da98e9a7878d60b9166aa7d
   VGInfiniteControl: ebe8f4903e4cb9eea9c8fef01e9d2a01cec02e66
 
-PODFILE CHECKSUM: c5f7abba15570943ea1e7ab0cc72c932e98ccf3b
+PODFILE CHECKSUM: 3c10d8e80ff24a608c0f70bb2ac82ce05aee2f27
 
 COCOAPODS: 1.6.1

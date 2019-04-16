@@ -9,25 +9,75 @@
 import UIKit
 import Eureka
 import SVProgressHUD
+import GoogleSignIn
+import FirebaseAuth
+import Firebase
+import FBSDKLoginKit
 
-class LoginViewController: FormViewController {
+class LoginViewController: FormViewController, GIDSignInUIDelegate,FBSDKLoginButtonDelegate {
 
+    
+
+    //customize the google signin button
+    @IBOutlet weak var googleSigninoutlet: GIDSignInButton!
+    @IBOutlet weak var facebookSigninOutlet: FBSDKLoginButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "LogIn"
+        title = "Sign in"
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        
+        facebookSigninOutlet.delegate = self
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
-        
+        navigationController?.navigationBar.backgroundColor = .clear
         createLoginForm()
+        facebookSigninOutlet.titleLabel?.text = "Facebook Sign in"
     }
+    
+    @IBAction func facebookBtnClick(_ sender: Any) {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+//        self.present(vc!, animated: true, completion: nil)
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("Facebook authentication with Firebase error: ", error)
+                return
+            }else{
+                //user successfully sign in
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+                self.present(vc!, animated: true, completion: nil)
+            }
+           
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    
+    @IBAction func googleBtnClick(_ sender: Any) {
+//        GIDSignIn.sharedInstance()?.signIn()
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+//        self.present(vc!, animated: true, completion: nil)
+    }
+    
     
     func createLoginForm(){
         form +++ Section()
             //email account
             <<< AccountRow("accountRow") {
-                $0.placeholder = "User Name(Email)"
+                $0.placeholder = "Username(Email)"
                 $0.placeholderColor = UIColor.white
                 $0.add(rule: RuleRequired())
                 $0.add(rule: RuleEmail())

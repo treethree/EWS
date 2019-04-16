@@ -13,11 +13,15 @@ import FirebaseDatabase
 import CoreLocation
 import GooglePlaces
 import GoogleMaps
+import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 
 var lat : Double = 0
 var lot : Double = 0
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate,  GIDSignInDelegate{
 
     var window: UIWindow?
     var locationManager = CLLocationManager()
@@ -32,7 +36,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
             let ctrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
             self.window?.rootViewController = ctrl
         }
+        
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        
+        FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
+
+ 
         return true
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        // ...
+        if let error = error {
+            // ...
+            print(error.localizedDescription)
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
+            
+            print(result?.user)
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication:  String?, annotation: Any) -> Bool {
+        
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(
+            application,
+            open: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
+        
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,
+                                                                sourceApplication: sourceApplication,
+                                                                annotation: annotation)
+        return googleDidHandle || facebookDidHandle
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
