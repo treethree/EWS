@@ -25,6 +25,7 @@
 		2F60F4672261166E00EE4D28 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4662261166E00EE4D28 /* AddPostViewController.swift */; };
 		2F60F46922619A3D00EE4D28 /* FriendsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F46822619A3D00EE4D28 /* FriendsMapViewController.swift */; };
 		2F60F46B2261AD2100EE4D28 /* IconSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F46A2261AD2100EE4D28 /* IconSizeExtension.swift */; };
+		2F6D221922663B5D00FB2233 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D221822663B5D00FB2233 /* ChatViewController.swift */; };
 		2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F750379225BF98F0045570B /* AppDelegate.swift */; };
 		2F75037C225BF98F0045570B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75037B225BF98F0045570B /* ViewController.swift */; };
 		2F75037F225BF98F0045570B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F75037D225BF98F0045570B /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		2F60F4662261166E00EE4D28 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		2F60F46822619A3D00EE4D28 /* FriendsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMapViewController.swift; sourceTree = "<group>"; };
 		2F60F46A2261AD2100EE4D28 /* IconSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSizeExtension.swift; sourceTree = "<group>"; };
+		2F6D221822663B5D00FB2233 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2F750376225BF98F0045570B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F750379225BF98F0045570B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F75037B225BF98F0045570B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				2FBC7267225E98B400B58065 /* LocationViewController.swift */,
 				2FBC7269225E98D100B58065 /* EarthquakeViewController.swift */,
 				2FE965222263E79600235B03 /* SplashViewController.swift */,
+				2F6D221822663B5D00FB2233 /* ChatViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				2F074962225C50EE00215677 /* RegistrationViewController.swift in Sources */,
 				2F60F4612260EDD100EE4D28 /* ButtonExtension.swift in Sources */,
 				2FBC7277226037E300B58065 /* FriendsTableViewCell.swift in Sources */,
+				2F6D221922663B5D00FB2233 /* ChatViewController.swift in Sources */,
 				2FBC7257225D953A00B58065 /* ProfileViewController.swift in Sources */,
 				2FBC7275225FA2AA00B58065 /* Earthquake.swift in Sources */,
 				2F75037A225BF98F0045570B /* AppDelegate.swift in Sources */,

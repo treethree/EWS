@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import GoogleSignIn
+import FBSDKLoginKit
 
 class SettingViewController: UIViewController {
 
@@ -31,8 +32,12 @@ class SettingViewController: UIViewController {
     @IBAction func logoutBtnClick(_ sender: UIButton) {
         signOutUserAccount()
         GIDSignIn.sharedInstance()?.signOut()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-        present(vc!, animated: true, completion: nil)
+        FBSDKLoginManager().logOut()
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+//        present(vc!, animated: true, completion: nil)
+        let mainStoreBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainStoreBoard.instantiateViewController(withIdentifier: "LoginViewController")
+        UIApplication.shared.keyWindow?.rootViewController = controller
     }
     
 }

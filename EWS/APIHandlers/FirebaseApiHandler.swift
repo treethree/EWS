@@ -16,6 +16,18 @@ class FirebaseApiHandler: NSObject {
     private override init() {}
     var ref = Database.database().reference()
     
+    func signinAndCheckIfCurrentUserExist(userId : String, completionHandler: @escaping (Bool)->Void){
+        self.getUsers { (userArr) in
+            for user in userArr!{
+                if user.uid == userId{
+                    completionHandler(true)
+                    return
+                }
+            }
+            completionHandler(false)
+        }
+    }
+    
     func getPosts(completionHandler: @escaping ([[String:Any]]?)->Void) {
         
         var postArr = [[String:Any]]()

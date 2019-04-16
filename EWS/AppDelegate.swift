@@ -21,7 +21,7 @@ import FBSDKLoginKit
 var lat : Double = 0
 var lot : Double = 0
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate,  GIDSignInDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate{
 
     var window: UIWindow?
     var locationManager = CLLocationManager()
@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
         }
         
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
         
         
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -47,28 +46,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
         return true
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        // ...
-        if let error = error {
-            // ...
-            print(error.localizedDescription)
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        // ...
-        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
-            
-            print(result?.user)
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        // ...
+//        if let error = error {
+//            // ...
+//            print(error.localizedDescription)
+//            return
+//        }
+//        
+//        guard let authentication = user.authentication else { return }
+//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+//                                                       accessToken: authentication.accessToken)
+//        // ...
+//        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
+//            
+//            print(result?.user)
+//        }
+//    }
+//    
+//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+//        // Perform any operations when the user disconnects from app here.
+//        // ...
+//    }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication:  String?, annotation: Any) -> Bool {
         

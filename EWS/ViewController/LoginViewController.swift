@@ -13,28 +13,37 @@ import GoogleSignIn
 import FirebaseAuth
 import Firebase
 import FBSDKLoginKit
+import TWMessageBarManager
 
-class LoginViewController: FormViewController, GIDSignInUIDelegate,FBSDKLoginButtonDelegate {
-
-    
+class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDelegate,FBSDKLoginButtonDelegate {
 
     //customize the google signin button
     @IBOutlet weak var googleSigninoutlet: GIDSignInButton!
     @IBOutlet weak var facebookSigninOutlet: FBSDKLoginButton!
     
+    var userRef : DatabaseReference!
+    var userstorageRef : StorageReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign in"
-        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         facebookSigninOutlet.delegate = self
+        facebookSigninOutlet.readPermissions = ["public_profile", "email"]
+        
+        self.userRef = Database.database().reference().child("User")
+        self.userstorageRef = Storage.storage().reference()
+        
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         navigationController?.navigationBar.backgroundColor = .clear
         createLoginForm()
-        facebookSigninOutlet.titleLabel?.text = "Facebook Sign in"
+        //facebookSigninOutlet.titleLabel?.text = "Facebook Sign in"
+
     }
     
     @IBAction func facebookBtnClick(_ sender: Any) {
@@ -42,23 +51,54 @@ class LoginViewController: FormViewController, GIDSignInUIDelegate,FBSDKLoginBut
 //        self.present(vc!, animated: true, completion: nil)
     }
     
+    //MARK: -FacebookSignInDelegate
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if let error = error {
-            print(error.localizedDescription)
+        if let err = error {
+            TWMessageBarManager().showMessage(withTitle: "Error", description: err.localizedDescription, type: .error)
+            print(err)
             return
         }
-        
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("Facebook authentication with Firebase error: ", error)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let err = error {
+                TWMessageBarManager().showMessage(withTitle: "Error", description: err.localizedDescription, type: .error)
+                print(err)
                 return
-            }else{
-                //user successfully sign in
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
-                self.present(vc!, animated: true, completion: nil)
             }
-           
+            FirebaseApiHandler.sharedInstance.signinAndCheckIfCurrentUserExist(userId: (Auth.auth().currentUser?.uid)!, completionHandler: {
+                (result) in
+                if result {
+                    print("current user exist")
+                } else {
+                    print("current user not exist")
+//                    print(authResult?.user.displayName)
+//                    print(authResult?.user.providerID)
+//                    print(authResult?.user.uid)
+//                    print(authResult?.user.providerData[0].email)
+//                    print(authResult?.user.email)
+                    var fullName = authResult?.user.displayName?.components(separatedBy: " ")
+                    let userDict = ["fname":fullName?[0],
+                                    "lname" : fullName?[1],
+                                    "email": authResult?.user.providerData[0].email,
+                                    "dob" : "", "phone" : "",
+                                    "gender" : "",
+                                    "location" : "",
+                                    "latitude" : lat,
+                                    "longitude" : lot,
+                                    "password" : "",
+                                    "uid" : authResult?.user.uid ] as [String : Any]
+                    
+        self.userRef.child((authResult?.user.uid)!).updateChildValues(userDict, withCompletionBlock: {
+                        (error, ref) in
+                    })
+                }
+                //Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+                self.present(controller!, animated: true, completion: nil)
+            })
+            
+            //
+            
         }
     }
     
@@ -67,10 +107,60 @@ class LoginViewController: FormViewController, GIDSignInUIDelegate,FBSDKLoginBut
     }
     
     @IBAction func googleBtnClick(_ sender: Any) {
-//        GIDSignIn.sharedInstance()?.signIn()
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
-//        self.present(vc!, animated: true, completion: nil)
+        GIDSignIn.sharedInstance()?.signIn()
     }
+    
+    //MARK: -GoogleSignInDelegate
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let err = error {
+            TWMessageBarManager().showMessage(withTitle: "Error", description: err.localizedDescription, type: .error)
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let err = error {
+                TWMessageBarManager().showMessage(withTitle: "Error", description: err.localizedDescription, type: .error)
+            } else {
+                FirebaseApiHandler.sharedInstance.signinAndCheckIfCurrentUserExist(userId: (Auth.auth().currentUser?.uid)!, completionHandler: {
+                    (result) in
+                    if result {
+                        print("current user exist")
+                    } else {
+                        print("current user not exist")
+                        if let fireUser = user {
+//                            print(fireUser.uid)
+//                            print(fireUser.displayName)
+//                            print(fireUser.email)
+                            var fullName = fireUser.displayName?.components(separatedBy: " ")
+                            let userDict = ["fname":fullName?[0],
+                                            "lname" : fullName?[1],
+                                            "email": fireUser.email,
+                                            "dob" : "", "phone" : "",
+                                            "gender" : "",
+                                            "location" : "",
+                                            "latitude" : lat,
+                                            "longitude" : lot,
+                                            "password" : "",
+                                            "uid" : fireUser.uid ] as [String : Any]
+                            
+                            self.userRef.child(fireUser.uid).updateChildValues(userDict, withCompletionBlock: {
+                                (error, ref) in
+                            })
+                            //Messaging.messaging().subscribe(toTopic: fireUser.uid)
+                            
+                        }
+                    }
+                    //Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+                    self.present(controller!, animated: true, completion: nil)
+                })
+            }
+        }
+    }
+    
     
     
     func createLoginForm(){
