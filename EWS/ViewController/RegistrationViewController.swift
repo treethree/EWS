@@ -48,21 +48,21 @@ class RegistrationViewController: FormViewController {
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
             }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-            }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
@@ -84,21 +84,21 @@ class RegistrationViewController: FormViewController {
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
             }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-            }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
@@ -120,21 +120,21 @@ class RegistrationViewController: FormViewController {
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
             }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-            }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
@@ -158,21 +158,21 @@ class RegistrationViewController: FormViewController {
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
             }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-            }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
@@ -193,21 +193,21 @@ class RegistrationViewController: FormViewController {
                     cell.layer.borderColor = UIColor.white.cgColor
                     cell.layer.masksToBounds = true
         }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-        }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//        }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
@@ -226,35 +226,41 @@ class RegistrationViewController: FormViewController {
     @IBAction func SignUpBtnClick(_ sender: UIButton) {
         self.view.endEditing(true)
         let formVal = form.values()
-        SVProgressHUD.show()
-        Auth.auth().createUser(withEmail: formVal["emailRow"] as! String, password: formVal["passwordRow"] as! String) { (result, error) in
-            if error == nil{
-                if let user = result?.user{
-                    
-                    let dict = ["fname":formVal["firstNameRow"],
-                                "lname" : formVal["lastNameRow"],
-                                "email": formVal["emailRow"],
-                                "dob" : "", "phone" : "",
-                                "gender" : formVal["genderRow"],
-                                "location" : "",
-                                "latitude" : lat,
-                                "longitude" : lot,
-                                "password" : formVal["passwordRow"],
-                                "uid" : user.uid ]
-                    self.ref.child("User").child(user.uid).setValue(dict)
+        if (formVal["emailRow"]! != nil && formVal["passwordRow"]! != nil ){
+            SVProgressHUD.show()
+            Auth.auth().createUser(withEmail: formVal["emailRow"] as! String, password: formVal["passwordRow"] as! String) { (result, error) in
+                if error == nil{
+                    if let user = result?.user{
+                        
+                        let dict = ["fname":formVal["firstNameRow"],
+                                    "lname" : formVal["lastNameRow"],
+                                    "email": formVal["emailRow"],
+                                    "dob" : "", "phone" : "",
+                                    "gender" : formVal["genderRow"],
+                                    "location" : "",
+                                    "latitude" : lat,
+                                    "longitude" : lot,
+                                    "password" : formVal["passwordRow"],
+                                    "uid" : user.uid ]
+                        self.ref.child("User").child(user.uid).setValue(dict)
+                    }
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
+                }else{
+                    print(error)
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
                 }
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-            }else{
-                print(error)
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
+                
             }
-            
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            let alert = UIAlertController(title: "Sign Up Error", message: "Make sure all info in form are correct!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        self.navigationController?.popViewController(animated: true)
     }
 }
 

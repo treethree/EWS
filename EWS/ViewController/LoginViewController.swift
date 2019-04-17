@@ -188,21 +188,21 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
 
                     cell.imageView?.image = UIImage(named: "email")
                 }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-            }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< SpaceCellRow(){
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
@@ -220,21 +220,21 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                     }
                     cell.textField.textColor = UIColor.white
                 }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-                }
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//                }
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
                     cell.layer.cornerRadius = 8.0
@@ -251,15 +251,23 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                 $0.title = "Submit"
                 }.onCellSelection({ (cell, row) in
                     let formVal = self.form.values()
-                    SVProgressHUD.show()
-                    FirebaseApiHandler.sharedInstance.signInUserAccount(email: formVal["accountRow"] as! String, password: formVal["passwordRow"] as! String, completionHandler: { (error) in
-                        print("Login error!")
-                        DispatchQueue.main.async {
-                            SVProgressHUD.dismiss()
-                        }
-                    })
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
-                    self.present(vc!, animated: true, completion: nil)        
+                    if (formVal["accountRow"]! != nil) && (formVal["passwordRow"]! != nil){
+                        SVProgressHUD.show()
+                        FirebaseApiHandler.sharedInstance.signInUserAccount(email: formVal["accountRow"] as! String, password: formVal["passwordRow"] as! String, completionHandler: { (error) in
+                            print("Login error!")
+                            DispatchQueue.main.async {
+                                SVProgressHUD.dismiss()
+                            }
+                        })
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+                        self.present(vc!, animated: true, completion: nil)
+                    }else{
+                        let alert = UIAlertController(title: "Sign In Error", message: "Make sure all info in form are correct!", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                    
                 })
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear

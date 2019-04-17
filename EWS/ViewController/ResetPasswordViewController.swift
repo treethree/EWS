@@ -70,21 +70,28 @@ class ResetPasswordViewController: FormViewController {
             }
             <<< ButtonRow() {
                 $0.title = "Reset"
-                }.onCellSelection({ (cell, row) in
-                    SVProgressHUD.show()
-                    FirebaseApiHandler.sharedInstance.resetPasswordUserAccount(email: self.form.values()["emailRow"] as! String, completionHandler: { (error) in
-                        if error == nil{
-                            DispatchQueue.main.async {
-                                SVProgressHUD.dismiss()
+                }.onCellSelection({ (cell, row) in    
+                    if self.form.values()["emailRow"]! != nil {
+                        SVProgressHUD.show()
+                        FirebaseApiHandler.sharedInstance.resetPasswordUserAccount(email: self.form.values()["emailRow"] as! String, completionHandler: { (error) in
+                            if error == nil{
+                                DispatchQueue.main.async {
+                                    SVProgressHUD.dismiss()
+                                }
+                            }else{
+                                print(error)
+                                DispatchQueue.main.async {
+                                    SVProgressHUD.dismiss()
+                                }
                             }
-                        }else{
-                            print(error)
-                            DispatchQueue.main.async {
-                                SVProgressHUD.dismiss()
-                            }
-                        }
-                    })
-                    self.navigationController?.popViewController(animated: true)
+                        })
+                        self.navigationController?.popViewController(animated: true)
+                    }else{
+                        let alert = UIAlertController(title: "Reset Password Error", message: "Make sure all info in form are correct!", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
                 })
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
