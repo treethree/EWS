@@ -14,6 +14,7 @@ import FirebaseAuth
 import Firebase
 import FBSDKLoginKit
 import TWMessageBarManager
+import SVProgressHUD
 
 class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDelegate,FBSDKLoginButtonDelegate {
 
@@ -65,6 +66,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                 print(err)
                 return
             }
+            SVProgressHUD.show()
             FirebaseApiHandler.sharedInstance.signinAndCheckIfCurrentUserExist(userId: (Auth.auth().currentUser?.uid)!, completionHandler: {
                 (result) in
                 if result {
@@ -95,6 +97,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                 //Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
                 let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                 self.present(controller!, animated: true, completion: nil)
+                SVProgressHUD.dismiss()
             })
             
             //
@@ -124,6 +127,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
             if let err = error {
                 TWMessageBarManager().showMessage(withTitle: "Error", description: err.localizedDescription, type: .error)
             } else {
+                SVProgressHUD.show()
                 FirebaseApiHandler.sharedInstance.signinAndCheckIfCurrentUserExist(userId: (Auth.auth().currentUser?.uid)!, completionHandler: {
                     (result) in
                     if result {
@@ -154,6 +158,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                         }
                     }
                     //Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
+                    SVProgressHUD.dismiss()
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                     self.present(controller!, animated: true, completion: nil)
                 })
@@ -247,7 +252,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
             }
-            <<< ButtonRow() {
+            <<< ButtonRow("submitRow") {
                 $0.title = "Submit"
                 }.onCellSelection({ (cell, row) in
                     let formVal = self.form.values()
@@ -259,8 +264,12 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                                 SVProgressHUD.dismiss()
                             }
                         })
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
-                        self.present(vc!, animated: true, completion: nil)
+//                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
+//                        self.present(vc!, animated: true, completion: nil)
+                        let mainStoreBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = mainStoreBoard.instantiateViewController(withIdentifier: "MainTabBarViewController")
+                        UIApplication.shared.keyWindow?.rootViewController = controller
+                        
                     }else{
                         let alert = UIAlertController(title: "Sign In Error", message: "Make sure all info in form are correct!", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -282,11 +291,11 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                 $0.cell.backgroundColor = .clear
             }
             
-            <<< ButtonRow() {
+            <<< ButtonRow("newAccountRow") {
                 $0.title = "Create new account"
                 }.onCellSelection({ (cell, row) in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController")
-                    self.navigationController?.pushViewController(vc!, animated: true)
+                    self.present(vc!, animated: true, completion: nil)
                 })
                 .cellSetup { cell, row in
                     cell.backgroundColor = .clear
@@ -300,11 +309,11 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                 $0.cell.spaceHeight = 10
                 $0.cell.backgroundColor = .clear
             }
-            <<< ButtonRow() {
+            <<< ButtonRow("forgetPWRow") {
                 $0.title = "Forget Password"
                 }.onCellSelection({ (cell, row) in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ResetPasswordViewController")
-                    self.navigationController?.pushViewController(vc!, animated: true)
+                    self.present(vc!, animated: true, completion: nil)
 
                 })
                 .cellSetup { cell, row in

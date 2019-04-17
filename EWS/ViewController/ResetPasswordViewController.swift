@@ -25,6 +25,10 @@ class ResetPasswordViewController: FormViewController {
         return .lightContent
     }
     
+    @IBAction func backBtnClick(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     func createResetPasswordForm(){
         form +++ Section()

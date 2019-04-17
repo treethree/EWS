@@ -1315,11 +1315,25 @@
                                 <rect key="frame" x="10" y="151" width="355" height="221"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G1-Rl-44y">
+                                <rect key="frame" x="16" y="41" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtnClick:" destination="GCW-xM-Mi7" eventType="touchUpInside" id="MiX-ea-x4V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="co7-2D-Tga" firstAttribute="trailing" secondItem="XPI-s8-FuK" secondAttribute="trailing" id="1bZ-eF-XI6"/>
+                            <constraint firstItem="co7-2D-Tga" firstAttribute="trailing" secondItem="2G1-Rl-44y" secondAttribute="trailing" constant="313" id="9Xi-zo-Vzo"/>
                             <constraint firstItem="co7-2D-Tga" firstAttribute="trailing" secondItem="ATw-BI-5a2" secondAttribute="trailing" constant="10" id="EHK-Qf-6YC"/>
+                            <constraint firstItem="ATw-BI-5a2" firstAttribute="top" secondItem="2G1-Rl-44y" secondAttribute="bottom" constant="80" id="RAr-ZH-YAm"/>
+                            <constraint firstItem="2G1-Rl-44y" firstAttribute="top" secondItem="co7-2D-Tga" secondAttribute="top" constant="21" id="VeG-wk-dGV"/>
+                            <constraint firstItem="2G1-Rl-44y" firstAttribute="leading" secondItem="co7-2D-Tga" secondAttribute="leading" constant="16" id="YRg-Sm-Eg8"/>
                             <constraint firstItem="ATw-BI-5a2" firstAttribute="top" secondItem="co7-2D-Tga" secondAttribute="top" constant="131" id="ZUq-z7-DKU"/>
                             <constraint firstItem="co7-2D-Tga" firstAttribute="bottom" secondItem="ATw-BI-5a2" secondAttribute="bottom" constant="295" id="lFX-Iv-KPC"/>
                             <constraint firstItem="XPI-s8-FuK" firstAttribute="top" secondItem="co7-2D-Tga" secondAttribute="top" constant="-20" id="nuu-MG-c2g"/>
@@ -1379,6 +1393,16 @@
                                 <rect key="frame" x="10" y="70" width="355" height="458"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-dN-hxB">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtnClick:" destination="n0z-c3-eNL" eventType="touchUpInside" id="ysQ-nk-gBl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1386,10 +1410,14 @@
                             <constraint firstItem="TQU-b3-xb5" firstAttribute="bottom" secondItem="fAx-wZ-jvS" secondAttribute="bottom" id="2u2-GR-ZX5"/>
                             <constraint firstItem="fAx-wZ-jvS" firstAttribute="leading" secondItem="TQU-b3-xb5" secondAttribute="leading" id="5xP-Fg-3A9"/>
                             <constraint firstItem="FoH-lJ-g2y" firstAttribute="leading" secondItem="TQU-b3-xb5" secondAttribute="leading" constant="10" id="8do-hc-mFV"/>
+                            <constraint firstItem="eGH-dN-hxB" firstAttribute="leading" secondItem="TQU-b3-xb5" secondAttribute="leading" constant="16" id="EFi-Rb-ZDZ"/>
+                            <constraint firstItem="eGH-dN-hxB" firstAttribute="top" secondItem="TQU-b3-xb5" secondAttribute="top" id="Ix7-9h-lWH"/>
                             <constraint firstItem="TQU-b3-xb5" firstAttribute="trailing" secondItem="FoH-lJ-g2y" secondAttribute="trailing" constant="10" id="JZG-fM-NfN"/>
                             <constraint firstItem="TQU-b3-xb5" firstAttribute="trailing" secondItem="UHE-o1-Vzy" secondAttribute="trailing" constant="10" id="Jma-Eu-Tto"/>
                             <constraint firstItem="UHE-o1-Vzy" firstAttribute="centerX" secondItem="buq-IY-l4Q" secondAttribute="centerX" id="Z9a-xc-Y5s"/>
+                            <constraint firstItem="FoH-lJ-g2y" firstAttribute="top" secondItem="eGH-dN-hxB" secondAttribute="bottom" constant="20" id="ZFh-9x-FmU"/>
                             <constraint firstItem="FoH-lJ-g2y" firstAttribute="top" secondItem="TQU-b3-xb5" secondAttribute="top" constant="50" id="h46-aZ-7tx"/>
+                            <constraint firstItem="TQU-b3-xb5" firstAttribute="trailing" secondItem="eGH-dN-hxB" secondAttribute="trailing" constant="313" id="hBt-Gz-Bc7"/>
                             <constraint firstItem="fAx-wZ-jvS" firstAttribute="top" secondItem="TQU-b3-xb5" secondAttribute="top" constant="-20" id="p9e-eB-B8B"/>
                             <constraint firstItem="UHE-o1-Vzy" firstAttribute="leading" secondItem="TQU-b3-xb5" secondAttribute="leading" constant="10" id="tbR-Vn-2Tp"/>
                             <constraint firstItem="TQU-b3-xb5" firstAttribute="trailing" secondItem="fAx-wZ-jvS" secondAttribute="trailing" id="uQO-IB-G3O"/>

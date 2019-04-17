@@ -28,6 +28,11 @@ class RegistrationViewController: FormViewController {
         createRegistrationForm()
     }
     
+    @IBAction func backBtnClick(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     func createRegistrationForm(){
         form +++ Section()
             
