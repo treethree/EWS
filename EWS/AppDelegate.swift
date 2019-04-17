@@ -16,12 +16,14 @@ import GoogleMaps
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
+import UserNotifications
+import FirebaseMessaging
 
 
 var lat : Double = 0
 var lot : Double = 0
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate, MessagingDelegate{
 
     var window: UIWindow?
     var locationManager = CLLocationManager()
@@ -31,6 +33,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
         GMSServices.provideAPIKey(client_key)
         
         FirebaseApp.configure()
+        //for notification
+        let setting = UNUserNotificationCenter.current()
+        setting.requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
+            
+            if granted{
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+                
+            }else{
+                
+            }
+            Messaging.messaging().delegate = self
+            Messaging.messaging().isAutoInitEnabled = true
+            Messaging.messaging().shouldEstablishDirectChannel = true
+            Messaging.messaging().subscribe(toTopic: "Another Test Topic")
+        }
+        
         setupLocation()
         if (Auth.auth().currentUser != nil) {
             let ctrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
@@ -46,29 +66,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
         return true
     }
     
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        // ...
-//        if let error = error {
-//            // ...
-//            print(error.localizedDescription)
-//            return
-//        }
-//        
-//        guard let authentication = user.authentication else { return }
-//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                       accessToken: authentication.accessToken)
-//        // ...
-//        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
-//            
-//            print(result?.user)
-//        }
-//    }
-//    
-//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-//        // Perform any operations when the user disconnects from app here.
-//        // ...
-//    }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let varAvgvalue = String(format: "%@", deviceToken as CVarArg)
+        
+        let  token = varAvgvalue.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
+        
+        print(token)
+        
+        //b894c7bb97a19555a4ec6bc16df57342ca4436e8762410d1f3c206277204c9d4
+        //4afc22fc1b49f8666ca50cbb64eae6addca177bff53ca9cf5fd6f575e31bfb88
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print(error.localizedDescription)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        print(userInfo)
+    }
+    
+    // Messaging Delegate
+    
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        
+        print(remoteMessage.appData)
+    }
+    
+    // The callback to handle data message received via FCM for devices running iOS 10 or above.
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        //Messaging.messaging().apnsToken = fcmToken
+        
+        print("token : \(fcmToken)")
+    }
+    
+
     func application(_ application: UIApplication, open url: URL, sourceApplication:  String?, annotation: Any) -> Bool {
         
         let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(

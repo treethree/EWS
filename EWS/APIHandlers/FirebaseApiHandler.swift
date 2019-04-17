@@ -10,11 +10,15 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseMessaging
+
 
 class FirebaseApiHandler: NSObject {
     static let sharedInstance = FirebaseApiHandler()
     private override init() {}
     var ref = Database.database().reference()
+    
+    private lazy var notificationRef = Database.database().reference().child("notificationRequests")
     
     func signinAndCheckIfCurrentUserExist(userId : String, completionHandler: @escaping (Bool)->Void){
         self.getUsers { (userArr) in
@@ -41,6 +45,13 @@ class FirebaseApiHandler: NSObject {
             "message": msg,
             "time": String(time)
         ]
+        
+        // send push notification to norificationRequest field in firebase that is observed by node.js server which will observe the change and then route the message to our receiver
+        let notificationKey = notificationRef.childByAutoId().key
+        let notification = ["message": msg, "receiverId": friendID, "senderId": uid]
+        
+        let notificationUpdate = [notificationKey: notification]
+        notificationRef.updateChildValues(notificationUpdate)
         
         ref.child("Conversations").child(key).child(msgKey).setValue(info) { error, ref in
             if let error = error {
@@ -254,7 +265,8 @@ class FirebaseApiHandler: NSObject {
     
     func signInUserAccount(email : String, password : String, completionHandler : @escaping (Error?)->Void){
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if error == nil{
+            if let uid = result?.user.uid {
+                Messaging.messaging().subscribe(toTopic: uid)
             }else{
                 completionHandler(error)
             }

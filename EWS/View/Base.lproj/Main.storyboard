@@ -1110,7 +1110,7 @@
                                 <rect key="frame" x="0.0" y="624" width="375" height="43"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qxC-0Y-EJ4">
-                                        <rect key="frame" x="46" y="5" width="281" height="33"/>
+                                        <rect key="frame" x="46" y="5" width="297" height="33"/>
                                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1121,7 +1121,7 @@
                                         <state key="normal" title="+"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDD-hJ-OPK">
-                                        <rect key="frame" x="335" y="8" width="32" height="32"/>
+                                        <rect key="frame" x="351" y="8" width="16" height="32"/>
                                         <state key="normal" image="send_message"/>
                                         <connections>
                                             <action selector="sendMessageBtnClick:" destination="aol-dg-qXd" eventType="touchUpInside" id="nc8-OF-T3b"/>

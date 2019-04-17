@@ -36,5 +36,6 @@ target 'EWS' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'Firebase/Messaging'
 
 end

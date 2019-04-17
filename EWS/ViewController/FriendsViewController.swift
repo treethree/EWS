@@ -49,6 +49,7 @@ class FriendsViewController: UIViewController {
     
     @IBAction func chatBtnClick(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController
+        singleFriend = users[sender.tag]
         vc?.singleFriendInfo = singleFriend
         present(vc!, animated: true, completion: nil)
     }
@@ -99,9 +100,9 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource{
         cell?.layer.cornerRadius = 10.0
         let userObj = users[indexPath.row]
         //bug here for multi friends
-        singleFriend = users[indexPath.row]
+        //singleFriend = users[indexPath.row]
         
-        //chatBtnOutlet.tag = indexPath.row
+        cell?.chatBtnOutlet.tag = indexPath.row
         
         cell?.fnameLbl.text = "First Name: \(userObj.fname)"
         cell?.lnameLbl.text = "Last Name: \(userObj.lname)"
