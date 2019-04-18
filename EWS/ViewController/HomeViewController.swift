@@ -95,7 +95,8 @@ class HomeViewController: BaseViewController {
     
     @IBAction func earthquakeBtnClick(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "EarthquakeViewController")
-        navigationController?.pushViewController(vc!, animated: true)
+        //navigationController?.pushViewController(vc!, animated: true)
+        present(vc!, animated: true, completion: nil)
     }
     
 }

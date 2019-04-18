@@ -73,9 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,CLLocationManagerDelegate
         let  token = varAvgvalue.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
         
         print(token)
-        
-        //b894c7bb97a19555a4ec6bc16df57342ca4436e8762410d1f3c206277204c9d4
-        //4afc22fc1b49f8666ca50cbb64eae6addca177bff53ca9cf5fd6f575e31bfb88
+        //Application token will remain same unless you delete your application.
+        //50c199a0a24bb904706dd46cf81521661dfebd68b7fb36d8fa3f379d3e0b651b
         Messaging.messaging().apnsToken = deviceToken
     }
     
