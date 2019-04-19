@@ -27,6 +27,10 @@ class ChatViewController: UIViewController {
         friendNameLbl.text = "\(singleFriendInfo!.fname)  \(singleFriendInfo!.lname)"
     }
     
+    func addRow(_ cInfo : ChatInfo){
+        chatInfo.append(cInfo)
+    }
+    
     func getChatConversation(){
         FirebaseApiHandler.sharedInstance.getConversation(friendID: singleFriendInfo!.uid) { (chatInfoArr) in
             if chatInfoArr != nil{
@@ -38,7 +42,6 @@ class ChatViewController: UIViewController {
             }else{
                 print("error")
             }
-            
         }
     }
     

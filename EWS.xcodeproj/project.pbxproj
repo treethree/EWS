@@ -18,6 +18,7 @@
 		2F07496E225D346000215677 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496D225D346000215677 /* FriendsViewController.swift */; };
 		2F074970225D346B00215677 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07496F225D346B00215677 /* SettingViewController.swift */; };
 		2F074978225D4C6600215677 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F074977225D4C6600215677 /* WeatherTableViewCell.swift */; };
+		2F4212D0226823EF001943FA /* APNSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4212CF226823EF001943FA /* APNSExtension.swift */; };
 		2F60F45F2260EC1900EE4D28 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */; };
 		2F60F4612260EDD100EE4D28 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */; };
 		2F60F4632260F87100EE4D28 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60F4622260F87100EE4D28 /* PostData.swift */; };
@@ -69,6 +70,7 @@
 		2F07496D225D346000215677 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		2F07496F225D346B00215677 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2F074977225D4C6600215677 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		2F4212CF226823EF001943FA /* APNSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSExtension.swift; sourceTree = "<group>"; };
 		2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		2F60F4622260F87100EE4D28 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				2F60F45E2260EC1900EE4D28 /* ImageExtension.swift */,
 				2F60F4602260EDD100EE4D28 /* ButtonExtension.swift */,
 				2F60F46A2261AD2100EE4D28 /* IconSizeExtension.swift */,
+				2F4212CF226823EF001943FA /* APNSExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FBC7264225E957000B58065 /* SpaceTableViewCell.swift in Sources */,
+				2F4212D0226823EF001943FA /* APNSExtension.swift in Sources */,
 				2F07495E225C435E00215677 /* LoginViewController.swift in Sources */,
 				2F60F4672261166E00EE4D28 /* AddPostViewController.swift in Sources */,
 				2F60F46B2261AD2100EE4D28 /* IconSizeExtension.swift in Sources */,

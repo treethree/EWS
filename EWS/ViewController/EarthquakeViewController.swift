@@ -23,9 +23,9 @@ class EarthquakeViewController: BaseViewController {
 
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        navigationController?.popViewController(animated: true)
-//    }
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.popViewController(animated: true)
+    }
     
     func callEarthquakeAPI()  {
         EarthquakeApiHandler.sharedInstance.getApiForEQ { (earthquake, error) in
@@ -34,8 +34,9 @@ class EarthquakeViewController: BaseViewController {
                 for item in self.eq!.features{
                     let lot = item.geometry.coordinates[0]
                     let lat = item.geometry.coordinates[1]
+                    //item.properties.place
                     let location = CLLocation(latitude: lat, longitude: lot)
-                    self.setupCordinate(loc : location)
+                    self.setupCordinate(loc : location, place: item.properties.place)
                 }
             }else{
                 print("error found!")
@@ -44,10 +45,10 @@ class EarthquakeViewController: BaseViewController {
     }
     
     
-    func setupCordinate(loc : CLLocation){
+    func setupCordinate(loc : CLLocation, place : String){
         //let location = CLLocation(latitude: 43.4343, longitude: -120.3434)
         let marker = GMSMarker()
-        marker.title = "One Location"
+        marker.title = place
         marker.position = loc.coordinate
         marker.map = viewGms
         marker.isDraggable = true

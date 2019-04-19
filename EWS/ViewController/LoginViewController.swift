@@ -37,7 +37,6 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
         self.userRef = Database.database().reference().child("User")
         self.userstorageRef = Storage.storage().reference()
         
-        
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
@@ -94,7 +93,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                         (error, ref) in
                     })
                 }
-                //Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
+                Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
                 let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                 self.present(controller!, animated: true, completion: nil)
                 SVProgressHUD.dismiss()
@@ -153,11 +152,11 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                             self.userRef.child(fireUser.uid).updateChildValues(userDict, withCompletionBlock: {
                                 (error, ref) in
                             })
-                            //Messaging.messaging().subscribe(toTopic: fireUser.uid)
+                            Messaging.messaging().subscribe(toTopic: fireUser.uid)
                             
                         }
                     }
-                    //Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
+                    Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
                     SVProgressHUD.dismiss()
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
                     self.present(controller!, animated: true, completion: nil)
@@ -263,6 +262,7 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                             DispatchQueue.main.async {
                                 SVProgressHUD.dismiss()
                             }
+                            Messaging.messaging().subscribe(toTopic: (Auth.auth().currentUser?.uid)!)
                         })
 //                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController")
 //                        self.present(vc!, animated: true, completion: nil)
@@ -274,7 +274,6 @@ class LoginViewController: FormViewController, GIDSignInDelegate,GIDSignInUIDele
                         let alert = UIAlertController(title: "Sign In Error", message: "Make sure all info in form are correct!", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                        
                     }
                     
                 })

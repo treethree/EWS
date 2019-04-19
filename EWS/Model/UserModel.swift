@@ -39,6 +39,7 @@ struct UserModel{
     var uid: String
     var image: UIImage?
     var password : String?
+    var senderId : String?
     
     init(_ uid: String, info: [String: Any]) {
         fname = info["fname"] as! String
@@ -53,7 +54,6 @@ struct UserModel{
         password = info["password"] as! String
         self.uid = uid
     }
-
 }
 
 
